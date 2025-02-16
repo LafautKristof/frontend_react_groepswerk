@@ -1,0 +1,10 @@
+.topBanner {
+    background-color: black;
+    height: calc(150px - 20px);
+    width: calc(100% - 20% - 10%);
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
