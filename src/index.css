@@ -5,3 +5,8 @@ body {
     max-width: calc(100% - 270px);
     margin: 0 auto;
 }
+
+.filter_banner {
+    display: flex;
+    align-items: stretch;
+}
