@@ -12,11 +12,11 @@
             .red {
                 width: 20px;
                 height: 40px;
-                background-color: red;
+                background-color: #db4444;
             }
             h3 {
                 font-size: 16px;
-                color: red;
+                color: #db4444;
                 font-weight: bold;
             }
         }

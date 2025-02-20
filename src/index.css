@@ -10,3 +10,9 @@ body {
     display: flex;
     align-items: stretch;
 }
+
+.today {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}

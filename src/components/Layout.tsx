@@ -3,7 +3,7 @@ import TopFilter from "./TopFilter";
 import TopHeader from "./TopHeader";
 import TopNav from "./TopNav";
 import Timer from "./Timer";
-
+import Grid1Row from "./Grid1Row";
 const Layout = () => {
     return (
         <>
@@ -13,8 +13,9 @@ const Layout = () => {
                 <TopFilter />
                 <TopBanner />
             </div>
-            <div className="Today">
+            <div className="today">
                 <Timer date="2025-03-25T17:00:00" />
+                <Grid1Row />
             </div>
         </>
     );
