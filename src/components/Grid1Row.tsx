@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import styles from "../css/Grid1Row.module.css";
 const Grid1Row = () => {
     const sliderRef = useRef<HTMLDivElement>(null);
