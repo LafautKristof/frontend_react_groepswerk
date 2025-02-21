@@ -1,0 +1,29 @@
+.top_frame_730 {
+    display: flex;
+    gap: 87px;
+    .categories {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .top_row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            .red {
+                width: 20px;
+                height: 40px;
+                background-color: #db4444;
+            }
+            h3 {
+                font-size: 16px;
+                color: #db4444;
+                font-weight: bold;
+            }
+        }
+        .title {
+            h2 {
+                font-size: 36px;
+            }
+        }
+    }
+}

@@ -16,3 +16,9 @@ body {
     flex-direction: column;
     gap: 40px;
 }
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}

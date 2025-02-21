@@ -1,0 +1,23 @@
+.categories_bottom {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    justify-content: space-between;
+    div {
+        border: 2px solid #c4c4c4bb;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 145px;
+        width: 170px;
+        gap: 10px;
+        transition: background-color 0.3s ease;
+
+        cursor: pointer;
+        &:hover {
+            background-color: #db4444;
+            color: white;
+        }
+    }
+}
