@@ -7,6 +7,8 @@ import Grid1Row from "./Grid1Row";
 import Footer from "./Footer";
 import CategoriesTop from "./CategoriesTop";
 import CategoriesBottom from "./CategoriesBottom";
+import OurProductsTop from "./OurProductsTop";
+import OurProductsBottom from "./OurProductsBottom";
 const Layout = () => {
     return (
         <>
@@ -25,6 +27,11 @@ const Layout = () => {
                 <CategoriesBottom />
             </div>
             <hr />
+            <div className="ourProducts">
+                <OurProductsTop />
+                <OurProductsBottom />
+            </div>
+
             <Footer />
         </>
     );

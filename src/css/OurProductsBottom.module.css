@@ -1,23 +1,8 @@
-.slider_container {
-    display: flex;
-    align-items: center;
-    max-width: 100%;
-    overflow: hidden;
-    margin: auto;
-    position: relative;
+.our_products_bottom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 30px;
-
-    .slider {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: scroll;
-        scroll-behavior: smooth;
-        white-space: nowrap;
-        gap: 15px;
-    }
-    .slider::-webkit-scrollbar {
-        display: none;
-    }
     .grid {
         max-width: 270px;
         background-color: #f5f5f5;
@@ -99,21 +84,5 @@
                 color: #7d8184;
             }
         }
-    }
-}
-.arrows {
-    display: flex;
-    justify-content: space-between;
-    button {
-        border: none;
-        cursor: pointer;
-        background-color: transparent;
-    }
-    .viewAll {
-        padding: 6px 30px;
-        background-color: #db4444;
-        color: white;
-        border-radius: 4px;
-        font-size: 16px;
     }
 }
