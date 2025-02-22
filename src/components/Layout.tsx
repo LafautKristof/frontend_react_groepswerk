@@ -1,21 +1,19 @@
-import TopBanner from "./TopBanner";
-
 import TopHeader from "./TopHeader";
 import TopNav from "./TopNav";
-import Timer from "./Timer";
-import Grid1Row from "./Grid1Row";
 import Footer from "./Footer";
-import CategoriesTop from "./CategoriesTop";
-import CategoriesBottom from "./CategoriesBottom";
-import OurProductsTop from "./OurProductsTop";
-import OurProductsBottom from "./OurProductsBottom";
-const Layout = () => {
+import { Outlet } from "react-router";
+import { type ReactNode } from "react";
+type PropTypes = {
+    children: ReactNode;
+};
+
+const Layout = ({ children }: PropTypes) => {
     return (
         <>
             <TopHeader />
             <TopNav />
 
-            <TopBanner />
+            {/* <TopBanner />
 
             <div className="today">
                 <Timer date="2025-03-25T17:00:00" />
@@ -30,7 +28,9 @@ const Layout = () => {
             <div className="ourProducts">
                 <OurProductsTop />
                 <OurProductsBottom />
-            </div>
+            </div> */}
+            <main>{children}</main>
+            <Outlet />
 
             <Footer />
         </>
