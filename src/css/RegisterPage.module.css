@@ -1,0 +1,11 @@
+.registerPage {
+    padding-top: 60px;
+    width: 100vw; /* 100% van de viewportbreedte */
+    position: relative; /* nodig voor de offset */
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw; /* trekt het element naar links om de container te breken */
+    margin-right: 0;
+    display: flex;
+    gap: 129px;
+}
