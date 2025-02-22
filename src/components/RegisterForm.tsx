@@ -1,4 +1,5 @@
 import styles from "../css/RegisterForm.module.css";
+import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 const Registerform = () => {
     return (
@@ -13,7 +14,10 @@ const Registerform = () => {
                     {" "}
                     <button type="submit">Log in</button>
                     <button>
-                        <Link to="/...">google</Link>
+                        <Link to="/...">
+                            <FcGoogle />
+                            <span>Sign up with Google</span>
+                        </Link>
                     </button>
                 </div>
             </form>

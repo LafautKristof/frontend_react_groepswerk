@@ -27,19 +27,32 @@
         }
         div {
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            gap: 20px;
             button {
+                width: 100%;
                 padding: 15px 30px;
-                background-color: #db4444;
-                color: white;
                 border-radius: 4px;
                 font-size: 16px;
+            }
+            button:first-of-type {
+                background-color: #db4444;
+                color: white;
                 border: none;
+            }
+            button:nth-of-type(2) {
+                background-color: white;
+                border: 1px solid #c4c4c4;
             }
             a {
                 text-decoration: none;
-                color: #db4444;
+                color: #000000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
             }
         }
     }
