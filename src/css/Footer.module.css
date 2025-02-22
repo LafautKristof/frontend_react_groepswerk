@@ -25,6 +25,7 @@
     .first_table {
         display: grid;
         gap: 24px;
+
         form {
             .input_container {
                 position: relative;
@@ -82,9 +83,7 @@
         }
     }
     p {
-        justify-self: center;
-        align-self: center;
-        text-align: center;
+        text-align: start;
         width: 100%;
         color: #a7a0a0;
     }

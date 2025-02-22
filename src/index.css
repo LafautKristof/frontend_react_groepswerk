@@ -6,6 +6,8 @@ body {
 }
 body {
     font-family: "Poppins", sans-serif;
+}
+main {
     max-width: calc(100% - 270px);
     margin: 0 auto;
 }
