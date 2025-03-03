@@ -1,8 +1,8 @@
 .categories_bottom {
-    display: flex;
+    display: grid;
     width: 100%;
     gap: 20px;
-    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     div {
         border: 2px solid #c4c4c4bb;
         display: flex;

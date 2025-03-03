@@ -1,4 +1,11 @@
 import styles from "../css/ProductCard.module.css";
+import {
+    IoHeartOutline,
+    IoEyeOutline,
+    IoStar,
+    IoStarHalf,
+    IoStarOutline,
+} from "react-icons/io5";
 
 type ObjectId = string;
 type Product = {
@@ -31,19 +38,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     src={product?.images[0]}
                     alt="Product afbeelding"
                 />
-                <div className={styles.cart}></div>
+
                 <p>-40%</p>
                 <i className={styles.heart}>
-                    <img
-                        src={"/src/assets/images/Fill_Heart.svg"}
-                        alt="Favoriet icoon"
-                    />
+                    <IoHeartOutline />
                 </i>
                 <i className={styles.watch}>
-                    <img
-                        src="/src/assets/images/Fill_Eye.svg"
-                        alt="Bekijk product"
-                    />
+                    <IoEyeOutline />
                 </i>
             </div>
             <div className={styles.info}>
@@ -53,10 +54,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     <p className={styles.old_price}>$7.99</p>
                 </div>
                 <div className={styles.rating}>
-                    <img
-                        src="/src/assets/images/Five_star.png"
-                        alt="Sterrenbeoordeling"
-                    />
+                    <IoStarOutline />
+                    <IoStarOutline />
+                    <IoStarOutline />
+                    <IoStarOutline />
+                    <IoStarOutline />
                     <p>(5000)</p>
                 </div>
             </div>

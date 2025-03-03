@@ -1,5 +1,12 @@
-import { Link } from "react-router";
 import styles from "../css/Footer.module.css";
+import { Link } from "react-router";
+import {
+    FaFacebookF,
+    FaTwitter,
+    FaInstagram,
+    FaLinkedinIn,
+} from "react-icons/fa";
+import { VscSend } from "react-icons/vsc";
 const Footer = () => {
     return (
         <>
@@ -12,10 +19,9 @@ const Footer = () => {
                         <div className={styles.input_container}>
                             <input type="text" placeholder="Enter your email" />
 
-                            <img
-                                src="../src/assets/icons/icon-send.svg"
-                                alt=""
-                            />
+                            <p>
+                                <VscSend />
+                            </p>
                         </div>
                     </form>
                 </div>
@@ -65,31 +71,19 @@ const Footer = () => {
                     </div>
                     <div className={styles.social_media}>
                         <Link to="/">
-                            <img
-                                src="../src/assets/icons/Icon-Facebook.svg"
-                                alt=""
-                            />
+                            <FaFacebookF />
                         </Link>
 
                         <Link to="/">
-                            <img
-                                src="../src/assets/icons/Icon-Twitter.svg"
-                                alt=""
-                            />
+                            <FaTwitter />
                         </Link>
 
                         <Link to="/">
-                            <img
-                                src="../src/assets/icons/icon-instagram.svg"
-                                alt=""
-                            />
+                            <FaInstagram />
                         </Link>
 
                         <Link to="/">
-                            <img
-                                src="../src/assets/icons/Icon-Linkedin.svg"
-                                alt=""
-                            />
+                            <FaLinkedinIn />
                         </Link>
                     </div>
                 </div>

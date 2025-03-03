@@ -1,3 +1,4 @@
+import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
 import { useRef } from "react";
 import styles from "../css/Grid1Row.module.css";
 import ProductCard from "./ProductCard";
@@ -31,17 +32,11 @@ const Grid1Row = () => {
             </div>{" "}
             <div className={styles.arrows}>
                 <button className={styles.arrowLeft} onClick={scrollLeft}>
-                    <img
-                        src="../src/assets/icons/FillWithLeftArrow.svg"
-                        alt=""
-                    />
+                    <IoArrowBackOutline />
                 </button>
                 <button className={styles.viewAll}>View All Products</button>
                 <button className={styles.arrowRight} onClick={scrollRight}>
-                    <img
-                        src="../src/assets/icons/FillWithRightArrow.svg"
-                        alt=""
-                    />
+                    <IoArrowForwardOutline />
                 </button>
             </div>
         </>

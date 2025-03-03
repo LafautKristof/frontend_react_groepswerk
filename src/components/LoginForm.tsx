@@ -35,7 +35,7 @@ const LoginForm = () => {
         const data = await response.json();
         if (response.ok) {
             console.log(data);
-            localStorage.setItem("token", data.cookie);
+            localStorage.setItem("token", data.token);
             setEmailPhoneValue("");
             setPasswordValue("");
             navigate("/");

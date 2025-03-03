@@ -1,7 +1,14 @@
-import { Link, NavLink } from "react-router";
 import styles from "../css/TopNav.module.css";
-
+import { Link, NavLink } from "react-router";
+import {
+    IoCartOutline,
+    IoHeartOutline,
+    IoPersonOutline,
+} from "react-icons/io5";
+import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
+import { useState, useEffect } from "react";
 const TopNav = () => {
+    const token = localStorage.getItem("token");
     return (
         <>
             <div className={styles.topNav}>
@@ -21,18 +28,18 @@ const TopNav = () => {
                             />
                         </form>
 
-                        <img src="\src\assets\icons\magnifying_glass.svg" />
+                        <p>
+                            <HiOutlineMagnifyingGlass size={24} />
+                        </p>
                     </div>
                     <i className={styles.icons}>
                         <Link to="/favorites">
-                            <img src="/src/assets/icons/heart.svg" alt="" />
+                            <IoHeartOutline size={30} />
                         </Link>
                         <Link to="/cart">
-                            <img
-                                src="/src/assets/icons/shopping_bag.svg"
-                                alt=""
-                            />
+                            <IoCartOutline size={30} />
                         </Link>
+                        {token && <IoPersonOutline size={30} />}
                         {/* <Link to="/profile">
                         <img src="/src/assets/icons/user.svg" alt="" />
                     </Link> */}
