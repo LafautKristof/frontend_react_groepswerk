@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
 import styles from "../css/LoginForm.module.css";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 const LoginForm = () => {
     const [emailPhoneValue, setEmailPhoneValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+    const { setToken } = useContext(AuthContext);
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         if (name === "email_phone") {
@@ -35,7 +36,7 @@ const LoginForm = () => {
         const data = await response.json();
         if (response.ok) {
             console.log(data);
-            localStorage.setItem("token", data.token);
+            setToken(data.token);
             setEmailPhoneValue("");
             setPasswordValue("");
             navigate("/");

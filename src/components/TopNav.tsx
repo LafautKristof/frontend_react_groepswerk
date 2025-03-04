@@ -6,9 +6,10 @@ import {
     IoPersonOutline,
 } from "react-icons/io5";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
 const TopNav = () => {
-    const token = localStorage.getItem("token");
+    const { token } = useContext(AuthContext);
     return (
         <>
             <div className={styles.topNav}>
@@ -17,7 +18,7 @@ const TopNav = () => {
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/contact">Contact</NavLink>
                     <NavLink to="/about">About</NavLink>
-                    <NavLink to="/signup">Sign Up</NavLink>
+                    <NavLink to="/register">Sign Up</NavLink>
                 </div>
                 <div className={styles.search_icons}>
                     <div>
