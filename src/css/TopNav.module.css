@@ -45,22 +45,84 @@
         }
         .icons {
             display: flex;
-            padding-left: 10px;
             gap: 10px;
-            height: 32px;
-            a {
+            padding-left: 10px;
+            .divHeart,
+            .divCart,
+            .divUser {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background-color: white;
+                border-radius: 50%;
+            }
+            .divCart:hover,
+            .divHeart:hover,
+            .divUser:hover {
+                background-color: #db4444;
+                .heart,
+                .cart,
+                .user {
+                    color: white;
+                    font-size: 24px;
+                }
+            }
+            .heart,
+            .cart,
+            .user {
                 color: black;
+                font-size: 24px;
+            }
+
+            .user {
+                cursor: pointer;
+            }
+            .dropdownContainer {
+                position: relative;
+                display: inline-block;
+                .dropdown {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    right: 0;
+                    background-color: hsla(212, 87%, 3%, 0.952);
+                    min-width: 225px;
+                    padding: 20px;
+                    border-radius: 4px;
+                    z-index: 100;
+                    color: white;
+                    a {
+                        text-decoration: none;
+                        color: white;
+                        font-size: 16px;
+                    }
+                }
+            }
+            :hover .dropdown {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+                div {
+                    a {
+                        display: grid;
+                        grid-template-columns: auto 1fr;
+                        gap: 20px;
+                        font-size: 20px;
+                    }
+                }
+                hr {
+                    width: 100vw;
+                    margin-left: -135px;
+                    border-width: 0;
+                    padding: 0;
+                    height: 2px;
+
+                    background-color: rgb(230, 226, 226);
+                }
             }
         }
     }
-}
-
-hr {
-    width: 100vw;
-    margin-left: -135px;
-    border-width: 0;
-    padding: 0;
-    height: 2px;
-
-    background-color: rgb(230, 226, 226);
 }
