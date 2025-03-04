@@ -9,7 +9,7 @@ const OurProductsBottom = () => {
         error,
         isLoading,
     } = useSWR(
-        "https://backend-node-groepswerk.onrender.com/api/products/keyboard",
+        "https://backend-node-groepswerk.onrender.com/api/products/mouse",
         fetcher
     );
 

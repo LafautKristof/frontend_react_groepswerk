@@ -34,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className={styles.grid}>
             <div className={styles.image}>
                 <img
-                    className={styles.images}
+                    className={styles.picture}
                     src={product?.images[0]}
                     alt="Product afbeelding"
                 />
