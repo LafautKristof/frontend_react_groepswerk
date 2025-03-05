@@ -28,3 +28,6 @@ main {
     flex-direction: column;
     gap: 40px;
 }
+.grid-container {
+    padding-top: 40px;
+}
