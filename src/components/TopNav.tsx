@@ -10,7 +10,7 @@ import {
     IoLogOutOutline,
 } from "react-icons/io5";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { use, useContext, useRef } from "react";
+import { useContext, useRef } from "react";
 import { AuthContext } from "../context/authContext";
 import { useState, useEffect } from "react";
 const TopNav = () => {
