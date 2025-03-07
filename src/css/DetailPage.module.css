@@ -2,6 +2,9 @@
     display: grid;
     grid-template-columns: auto auto 1fr;
     gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     .small_photos {
         display: grid;
         grid-template-rows: repeat(4, 1fr);
@@ -9,15 +12,18 @@
 
         img {
             display: inline-block;
-
-            width: 170px;
-            height: 138px;
+            width: 100%;
+            max-width: 170px;
+            height: auto;
         }
     }
     .big_photo {
         img {
-            height: 600px;
-            width: 500px;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            max-height: 600px;
+            max-width: 500px;
             object-fit: contain;
         }
     }
