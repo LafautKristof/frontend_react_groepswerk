@@ -63,7 +63,7 @@
 
         /* Plaats .watch iets onder het verticale midden */
         .watch {
-            top: 90px;
+            top: 75px;
             transform: translate(-50%, -50%);
         }
     }

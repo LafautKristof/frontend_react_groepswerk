@@ -4,6 +4,7 @@
     background-color: black;
 
     margin-top: 40px;
+    margin-left: 40px;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
