@@ -5,10 +5,10 @@ const OurProductsTop = () => {
             <div className={styles.our_products}>
                 <div className={styles.top_row}>
                     <p className={styles.red}></p>
-                    <h3>Categories</h3>
+                    <h3>Our Products</h3>
                 </div>
                 <div className={styles.title}>
-                    <h2>Our Products</h2>
+                    <h2>Explore Our Products</h2>
                 </div>
             </div>
         </div>

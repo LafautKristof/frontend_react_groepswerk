@@ -34,7 +34,7 @@
         i {
             height: 30px;
             width: 30px;
-            display: flex; /* Maakt <i> de positioneringscontainer */
+            display: flex;
             justify-content: center;
             align-items: center;
         }
@@ -45,23 +45,22 @@
             padding: 2px;
             position: absolute;
             right: 5px;
-            transform: translateX(-50%); /* Horizontaal centreren */
+            transform: translateX(-50%);
             cursor: pointer;
             background-color: white;
             border-radius: 50%;
             font-size: 24px;
             &:hover {
                 background-color: #db4444;
+                color: white;
             }
         }
 
-        /* Plaats .heart iets boven het verticale midden */
         .heart {
             top: 30px;
             transform: translate(-50%, -50%);
         }
 
-        /* Plaats .watch iets onder het verticale midden */
         .watch {
             top: 75px;
             transform: translate(-50%, -50%);
@@ -92,7 +91,7 @@
         }
         .rating {
             display: flex;
-            gap: 10px;
+            gap: 2px;
             color: #7d8184;
         }
     }
