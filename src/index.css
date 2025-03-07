@@ -18,6 +18,8 @@ main {
 }
 
 .today {
+    margin-top: 60px;
+    margin-bottom: 60px;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -27,7 +29,17 @@ main {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    margin-bottom: 40px;
+    margin-top: 40px;
 }
 .grid-container {
     padding-top: 40px;
+}
+
+.blackButtons {
+    margin-top: 150px;
+    margin-bottom: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

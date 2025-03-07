@@ -1,6 +1,7 @@
 .top_frame_736 {
     display: flex;
     gap: 87px;
+    margin-bottom: 40px;
     .our_products {
         display: flex;
         flex-direction: column;
