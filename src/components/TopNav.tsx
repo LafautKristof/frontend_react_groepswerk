@@ -9,12 +9,14 @@ import {
     IoStarOutline,
     IoLogOutOutline,
 } from "react-icons/io5";
+import { GrUserAdmin } from "react-icons/gr";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { useContext, useRef } from "react";
 import { AuthContext } from "../context/authContext";
 import { useState, useEffect } from "react";
 const TopNav = () => {
     const { token } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [isDropDown, setIsDropDown] = useState(false);
     const dropDownRef = useRef<HTMLDivElement>(null);
 
@@ -111,6 +113,17 @@ const TopNav = () => {
                                                     My Reviews
                                                 </Link>
                                             </div>
+                                            {user?.role === "admin" && (
+                                                <div>
+                                                    <Link to="https://backend-node-groepswerk.onrender.com/admin">
+                                                        <GrUserAdmin
+                                                            size={24}
+                                                        />
+                                                        Admin
+                                                    </Link>
+                                                </div>
+                                            )}
+
                                             <div>
                                                 <Link to="/logout">
                                                     <IoLogOutOutline

@@ -7,7 +7,7 @@ const LoginForm = () => {
     const [passwordValue, setPasswordValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
-    const { setToken } = useContext(AuthContext);
+    const { setToken, setUser } = useContext(AuthContext);
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         if (name === "email_phone") {
@@ -37,6 +37,7 @@ const LoginForm = () => {
         if (response.ok) {
             console.log(data);
             setToken(data.token);
+            setUser(data.user);
             setEmailPhoneValue("");
             setPasswordValue("");
             navigate("/");
