@@ -115,7 +115,11 @@ const TopNav = () => {
                                             </div>
                                             {user?.role === "admin" && (
                                                 <div>
-                                                    <Link to="https://backend-node-groepswerk.onrender.com/admin">
+                                                    <Link
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        to="https://backend-node-groepswerk.onrender.com/login"
+                                                    >
                                                         <GrUserAdmin
                                                             size={24}
                                                         />
