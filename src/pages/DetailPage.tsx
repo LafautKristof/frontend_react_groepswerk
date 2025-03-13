@@ -9,36 +9,24 @@ import {
 } from "react-icons/io5";
 import { PiTruck } from "react-icons/pi";
 import { PiArrowsCounterClockwiseLight } from "react-icons/pi";
+import { Link, useLocation } from "react-router-dom";
 const DetailPage: React.FC = () => {
+    const location = useLocation();
+    const { product } = location.state || {};
     return (
         <>
             <div className={styles.grid_container}>
                 <div className={styles.small_photos}>
-                    <img
-                        src="../src/assets/images/1200x1046.jpg"
-                        alt="Kleine foto 1"
-                    />
-                    <img
-                        src="../src/assets/images/1200x1046.jpg"
-                        alt="Kleine foto 2"
-                    />
-                    <img
-                        src="../src/assets/images/1200x1046.jpg"
-                        alt="Kleine foto 3"
-                    />
-                    <img
-                        src="../src/assets/images/1200x1046.jpg"
-                        alt="Kleine foto 4"
-                    />
+                    <img src={product?.images[1]} alt="Kleine foto 1" />
+                    <img src={product?.images[2]} alt="Kleine foto 2" />
+                    <img src={product?.images[3]} alt="Kleine foto 3" />
+                    <img src={product?.images[4]} alt="Kleine foto 4" />
                 </div>
                 <div className={styles.big_photo}>
-                    <img
-                        src="../src/assets/images/1200x1046.jpg"
-                        alt="Grote foto"
-                    />
+                    <img src={product?.images[0]} alt="Grote foto" />
                 </div>
                 <div className={styles.info}>
-                    <h2>Havic HV G-92 Gamepad</h2>
+                    <h2>{product?.name}</h2>
                     <div className={styles.rating_instock}>
                         <div className={styles.icons}>
                             <IoStar />
@@ -47,16 +35,14 @@ const DetailPage: React.FC = () => {
                             <IoStarOutline />
                             <IoStarOutline />
                         </div>
-                        <p className={styles.reviews}>(150 reviews)</p>
+                        <p className={styles.reviews}>
+                            ({product?.raters} reviews)
+                        </p>
                         <p className={styles.divider}>|</p>
                         <p className={styles.instock}>In Stock</p>
                     </div>
-                    <p className={styles.price}>$190.00</p>
-                    <p className={styles.description}>
-                        Hier komt de informatie die je naast de foto's wilt
-                        tonen. Voeg hier meer details toe of style de tekst
-                        verder naar jouw voorkeur.
-                    </p>
+                    <p className={styles.price}>${product?.price}</p>
+                    <p className={styles.description}>{product?.description}</p>
                     <hr />
                     <div className={styles.buttons}>
                         <div className={styles.quantity}>

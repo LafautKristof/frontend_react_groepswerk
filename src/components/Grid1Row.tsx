@@ -1,9 +1,19 @@
+import styles from "../css/Grid1Row.module.css";
 import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
 import { useRef } from "react";
-import styles from "../css/Grid1Row.module.css";
 import ProductCard from "./ProductCard";
+import useSWR from "swr";
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const Grid1Row = () => {
     const sliderRef = useRef<HTMLDivElement>(null);
+    const {
+        data: products,
+        error,
+        isLoading,
+    } = useSWR(
+        "https://backend-node-groepswerk.onrender.com/api/products/computerscreen",
+        fetcher
+    );
 
     const scrollLeft = () => {
         if (sliderRef.current) {
@@ -21,13 +31,18 @@ const Grid1Row = () => {
         <>
             <div className={styles.slider_container}>
                 <div className={styles.slider} ref={sliderRef}>
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    {products &&
+                        products.map(
+                            (product: any) => (
+                                console.log(product),
+                                (
+                                    <ProductCard
+                                        key={product._id}
+                                        product={product}
+                                    />
+                                )
+                            )
+                        )}
                 </div>
             </div>{" "}
             <div className={styles.arrows}>

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import styles from "../css/Timer.module.css";
+import { useEffect, useState } from "react";
 
 type Countdown = { date: string };
 

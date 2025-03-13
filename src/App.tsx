@@ -21,7 +21,7 @@ function App() {
                             <Route path="/register" element={<Register />} />
 
                             <Route
-                                path="/detailpage/:id"
+                                path="/detailpage/:id/:slug"
                                 element={<DetailPage />}
                             />
                             <Route
