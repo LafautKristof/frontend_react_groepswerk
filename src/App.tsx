@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import DetailPage from "./pages/DetailPage";
+import CheckoutForm from "./pages/CheckoutPage";
 import { AuthProvider } from "./context/authContext";
 import { WishListProvider } from "./context/wishListContext";
 import { CartProvider } from "./context/cartContext";
@@ -22,6 +23,10 @@ function App() {
                             <Route
                                 path="/detailpage/:id"
                                 element={<DetailPage />}
+                            />
+                            <Route
+                                path="/checkout"
+                                element={<CheckoutForm />}
                             />
                         </Routes>
                     </Layout>
