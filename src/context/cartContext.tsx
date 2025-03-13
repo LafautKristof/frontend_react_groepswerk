@@ -1,21 +1,45 @@
-import { createContext, useState, useEffect, ReactNode } from "react";
+import {
+    createContext,
+    useState,
+    useEffect,
+    ReactNode,
+    useContext,
+} from "react";
+import { AuthContext } from "./authContext";
 
-export const CartContext = createContext([] as any);
+type CartItem = {
+    _id: string;
+};
+type CartContextType = {
+    cart: CartItem[] | null;
+    setCart: (cart: any | null) => void;
+};
+export const CartContext = createContext<CartContextType>({
+    cart: null,
+    setCart: () => {},
+});
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-    const [cart, setCart] = useState(() => {
-        const storedCart = localStorage.getItem("cart");
-        return storedCart ? JSON.parse(storedCart) : [];
-    });
-    const addDataToCart = () => {
-        localStorage.setItem("cart", JSON.stringify(cart));
-    };
+    const { user, token } = useContext(AuthContext);
+    const [cart, setCart] = useState<CartItem[] | null>(null);
 
     useEffect(() => {
-        addDataToCart();
-    }, [cart]);
+        if (user && token) {
+            const userWithCart = user as any;
+            if (userWithCart.cart && userWithCart.cart.length > 0) {
+                setCart(userWithCart.cart);
+                localStorage.setItem("cart", JSON.stringify(userWithCart.cart));
+            } else {
+                setCart([]);
+                localStorage.setItem("cart", JSON.stringify([]));
+            }
+        } else {
+            setCart(null);
+            localStorage.removeItem("cart");
+        }
+    }, [user, token]);
     return (
-        <CartContext.Provider value={[cart, setCart]}>
+        <CartContext.Provider value={{ cart, setCart }}>
             {children}
         </CartContext.Provider>
     );
