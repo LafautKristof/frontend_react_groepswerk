@@ -1,3 +1,8 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .grid {
     width: 270px;
     flex: 0 0 270px;
@@ -94,7 +99,10 @@
         .rating {
             display: flex;
             gap: 2px;
-            color: #7d8184;
+            color: #ffad33;
+            p {
+                color: #7d8184;
+            }
         }
     }
 }

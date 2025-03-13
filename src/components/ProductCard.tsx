@@ -1,12 +1,6 @@
 import styles from "../css/ProductCard.module.css";
-import {
-    IoHeartOutline,
-    IoEyeOutline,
-    IoStar,
-    IoStarHalf,
-    IoStarOutline,
-} from "react-icons/io5";
-
+import { IoHeartOutline, IoCartOutline } from "react-icons/io5";
+import StarRating from "./StarRating";
 import { Link } from "react-router";
 import { slugit } from "../utils/helpers";
 type ObjectId = string;
@@ -32,6 +26,7 @@ type ProductCardProps = {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     console.log(product);
+    const productRating = product.points / Number(product.raters);
     return (
         <Link
             to={`/detailpage/${product._id}/${slugit(product.name)})`}
@@ -49,9 +44,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     <i
                         className={styles.heart}
                         onClick={(e) => {
-                            e.preventDefault(); // voorkomt de standaard Link navigatie
-                            e.stopPropagation(); // voorkomt dat de klik naar de parent Link bubblet
-                            // Voeg hier de logica toe voor de 'heart'-klik, bijvoorbeeld:
+                            e.preventDefault();
+                            e.stopPropagation();
+
                             console.log("Heart clicked!");
                         }}
                     >
@@ -66,22 +61,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                             console.log("Watch clicked!");
                         }}
                     >
-                        <IoEyeOutline />
+                        <IoCartOutline />
                     </i>
                 </div>
                 <div className={styles.info}>
                     <h2>{product?.name}</h2>
                     <div className={styles.price}>
-                        <p className={styles.new_price}>$10.00</p>
+                        <p className={styles.new_price}>{product?.price}</p>
                         <p className={styles.old_price}>$7.99</p>
                     </div>
                     <div className={styles.rating}>
-                        <IoStarOutline />
-                        <IoStarOutline />
-                        <IoStarOutline />
-                        <IoStarOutline />
-                        <IoStarOutline />
-                        <p>(5000)</p>
+                        <StarRating rating={productRating} />
+                        <p>{product?.raters}</p>
                     </div>
                 </div>
             </div>

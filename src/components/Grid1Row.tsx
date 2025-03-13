@@ -6,15 +6,12 @@ import useSWR from "swr";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const Grid1Row = () => {
     const sliderRef = useRef<HTMLDivElement>(null);
-    const {
-        data: products,
-        error,
-        isLoading,
-    } = useSWR(
-        "https://backend-node-groepswerk.onrender.com/api/products/computerscreen",
+    const { data, error, isLoading } = useSWR(
+        "https://backend-node-groepswerk.onrender.com/api/products/random/10",
         fetcher
     );
-
+    const products = data && data.data ? data.data.flat() : [];
+    console.log(products);
     const scrollLeft = () => {
         if (sliderRef.current) {
             sliderRef.current.scrollBy({ left: -250, behavior: "smooth" });

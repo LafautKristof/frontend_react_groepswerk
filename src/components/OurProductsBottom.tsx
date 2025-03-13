@@ -4,15 +4,11 @@ import useSWR from "swr";
 import { useEffect, useState } from "react";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const OurProductsBottom = () => {
-    const {
-        data: products,
-        error,
-        isLoading,
-    } = useSWR(
-        "https://backend-node-groepswerk.onrender.com/api/products/computerscreen",
+    const { data, error, isLoading } = useSWR(
+        "https://backend-node-groepswerk.onrender.com/api/products/random/12",
         fetcher
     );
-
+    const products = data && data.data ? data.data.flat() : [];
     if (error) return <div>Error loading products</div>;
     if (isLoading) return <div>Loading...</div>;
     return (
