@@ -1,5 +1,5 @@
 import styles from "../css/TopNav.module.css";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import {
     IoCartOutline,
     IoHeartOutline,
@@ -15,11 +15,18 @@ import { useContext, useRef } from "react";
 import { AuthContext } from "../context/authContext";
 import { useState, useEffect } from "react";
 const TopNav = () => {
-    const { token } = useContext(AuthContext);
-    const { user } = useContext(AuthContext);
+    const { token, setToken } = useContext(AuthContext);
+    const { user, setUser } = useContext(AuthContext);
     const [isDropDown, setIsDropDown] = useState(false);
     const dropDownRef = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
 
+    const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        setUser(null);
+        setToken(null);
+        navigate("/login");
+    };
     const handleClick = () => {
         setIsDropDown((prev) => !prev);
     };
@@ -46,7 +53,7 @@ const TopNav = () => {
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/contact">Contact</NavLink>
                     <NavLink to="/about">About</NavLink>
-                    <NavLink to="/register">Sign Up</NavLink>
+                    <NavLink to="/login">Sign Up</NavLink>
                 </div>
                 <div className={styles.search_icons}>
                     <div>
@@ -129,7 +136,10 @@ const TopNav = () => {
                                             )}
 
                                             <div>
-                                                <Link to="/logout">
+                                                <Link
+                                                    to="#"
+                                                    onClick={handleLogout}
+                                                >
                                                     <IoLogOutOutline
                                                         size={24}
                                                     />
