@@ -1,6 +1,6 @@
 import styles from "../css/ProductCard.module.css";
 import { IoHeartOutline, IoCartOutline } from "react-icons/io5";
-import StarRating from "./StarRating";
+import StarRating from "./StartRating";
 import { Link } from "react-router";
 import { slugit } from "../utils/helpers";
 type ObjectId = string;
