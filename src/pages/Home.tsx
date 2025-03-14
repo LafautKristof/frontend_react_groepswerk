@@ -12,6 +12,7 @@ import About from "../pages/About";
 import { FaTruck } from "react-icons/fa6";
 import { BiSupport } from "react-icons/bi";
 import { IoShieldCheckmark } from "react-icons/io5";
+import React from "react";
 const Home = () => {
   return (
     <>

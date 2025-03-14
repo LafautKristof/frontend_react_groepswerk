@@ -8,6 +8,7 @@ import DetailPage from "./pages/DetailPage";
 import { AuthProvider } from "./context/authContext";
 import { WishListProvider } from "./context/wishListContext";
 import { CartProvider } from "./context/cartContext";
+import React from "react";
 
 function App() {
   return (
