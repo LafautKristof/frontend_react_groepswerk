@@ -2,14 +2,12 @@ import styles from "../css/Grid1Row.module.css";
 import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
 import { useRef } from "react";
 import ProductCard from "./ProductCard";
-import useSWR from "swr";
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+import { useGetProductsRandomQuery } from "./store/productsApi";
+
 const Grid1Row = () => {
     const sliderRef = useRef<HTMLDivElement>(null);
-    const { data, error, isLoading } = useSWR(
-        "https://backend-node-groepswerk.onrender.com/api/products/random/10",
-        fetcher
-    );
+    const { data, error, isLoading } = useGetProductsRandomQuery(10);
     const products = data && data.data ? data.data.flat() : [];
     console.log(products);
     const scrollLeft = () => {
@@ -23,7 +21,8 @@ const Grid1Row = () => {
             sliderRef.current.scrollBy({ left: 250, behavior: "smooth" });
         }
     };
-
+    if (error) return <div>Error loading products</div>;
+    if (isLoading) return <div>Loading...</div>;
     return (
         <>
             <div className={styles.slider_container}>

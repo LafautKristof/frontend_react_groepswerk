@@ -1,13 +1,9 @@
 import styles from "../css/OurProductsBottom.module.css";
 import ProductCard from "./ProductCard";
-import useSWR from "swr";
-import { useEffect, useState } from "react";
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+import { useGetProductsRandomQuery } from "./store/productsApi";
 const OurProductsBottom = () => {
-    const { data, error, isLoading } = useSWR(
-        "https://backend-node-groepswerk.onrender.com/api/products/random/12",
-        fetcher
-    );
+    const { data, error, isLoading } = useGetProductsRandomQuery(10);
     const products = data && data.data ? data.data.flat() : [];
     if (error) return <div>Error loading products</div>;
     if (isLoading) return <div>Loading...</div>;
