@@ -5,12 +5,12 @@ const TopFilter = () => {
         <>
             <div className={styles.topFilter}>
                 <ul>
-                    <Link to="/...">Computerscreen</Link>
-                    <Link to="/...">Headphone</Link>
-                    <Link to="/...">Keayboard</Link>
-                    <Link to="/...">Mouse</Link>
-                    <Link to="/...">RAM</Link>
-                    <Link to="/...">Videocard</Link>
+                    <Link to="/allproduct/computerscreen">Computerscreen</Link>
+                    <Link to="/allproduct/headphones">Headphone</Link>
+                    <Link to="/allproduct/keyboard">Keayboard</Link>
+                    <Link to="/allproduct/mouse">Mouse</Link>
+                    <Link to="/allproduct/ram">RAM</Link>
+                    <Link to="/allproduct/videocard">Videocard</Link>
                 </ul>
             </div>
             <div className="seperator"></div>
