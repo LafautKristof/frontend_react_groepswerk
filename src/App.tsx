@@ -24,6 +24,10 @@ function App() {
                                 path="/detailpage/:id/:slug"
                                 element={<DetailPage />}
                             />
+                            {/* <Route
+                                path="/allproduct/:item"
+                                element={<AllProductPage />}
+                            /> TODO!!!!!!!!!!!!!!!!!!!!!!*/}
                             <Route
                                 path="/checkout"
                                 element={<CheckoutForm />}

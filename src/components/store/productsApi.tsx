@@ -7,10 +7,14 @@ const productsApi = createApi({
     }),
     endpoints: (builder) => ({
         getProductsRandom: builder.query({
-            query: (id) => "/random/" + id,
+            query: (id) => `/random/${id}`,
+        }),
+        getAllProducts: builder.query({
+            query: (item: string) => `${item}`,
         }),
     }),
 });
 
-export const { useGetProductsRandomQuery } = productsApi;
+export const { useGetProductsRandomQuery, useGetAllProductsQuery } =
+    productsApi;
 export default productsApi;
