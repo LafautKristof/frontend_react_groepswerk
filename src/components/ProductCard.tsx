@@ -5,9 +5,10 @@ import { Link } from "react-router";
 import { slugit } from "../utils/helpers";
 import { useSelector, useDispatch } from "react-redux";
 import { addToWishList } from "./store/wishlistSlice";
-import { addToCart } from "./store/cartSlice";
 import { AuthContext } from "../context/authContext";
 import { useContext } from "react";
+import { useAddToCartMutation } from "./store/cartApi";
+import { addToCart } from "./store/cartSlice";
 type ObjectId = string;
 type Product = {
     _id: ObjectId;
@@ -31,6 +32,7 @@ type ProductCardProps = {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const productRating = product.points / Number(product.raters);
+    const [addToCartMutation] = useAddToCartMutation();
 
     const dispatch = useDispatch();
     const { user } = useContext(AuthContext);
@@ -38,13 +40,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const handleAddToWishlist = (product: Product) => {
         dispatch(addToWishList(product));
     };
-    const handleAddToCart = (product: Product) => {
-        console.log("user", user);
+    const handleAddToCart = async (product: Product) => {
         if (!user) {
             alert("You need to be logged in to add products to your cart.");
         } else {
-            console.log("2", product);
-            dispatch(addToCart(product));
+            console.log(user);
+            try {
+                await addToCartMutation({ product, user }).unwrap();
+                dispatch(addToCart(product));
+            } catch (error) {
+                console.log(error);
+            }
         }
     };
     return (
