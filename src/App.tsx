@@ -5,6 +5,7 @@ import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import DetailPage from "./pages/DetailPage";
 import CheckoutForm from "./pages/CheckoutPage";
+import Profile_Edit from "./pages/ProfileEdit";
 import { AuthProvider } from "./context/authContext";
 import { WishListProvider } from "./context/wishListContext";
 import { CartProvider } from "./context/cartContext";
@@ -31,6 +32,10 @@ function App() {
                             <Route
                                 path="/checkout"
                                 element={<CheckoutForm />}
+                            />
+                            <Route
+                                path="/myaccount"
+                                element={<Profile_Edit />}
                             />
                         </Routes>
                     </Layout>

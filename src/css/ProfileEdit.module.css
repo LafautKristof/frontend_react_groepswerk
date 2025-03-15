@@ -1,0 +1,77 @@
+.profile-edit-container {
+    display: flex;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 25%;
+    padding-right: 20px;
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.sidebar ul li.active {
+    color: red;
+}
+
+.profile-edit-form {
+    width: 75%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.profile-edit-form h2 {
+    margin-bottom: 20px;
+}
+
+.profile-edit-form .form-group {
+    margin-bottom: 20px;
+}
+
+.profile-edit-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.profile-edit-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.profile-edit-form .form-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-edit-form .form-actions .cancel-button,
+.profile-edit-form .form-actions .save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-edit-form .form-actions .cancel-button {
+    background-color: #ccc;
+    margin-right: 10px;
+}
+
+.profile-edit-form .form-actions .save-button {
+    background-color: #d9534f;
+    color: white;
+}
