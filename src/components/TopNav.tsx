@@ -64,7 +64,7 @@ const TopNav = () => {
               </Link>
             </div>
             <div className={styles.divCart}>
-              <Link to="/cart">
+              <Link to="/checkout">
                 <IoCartOutline className={styles.cart} onClick={handleClick} />
               </Link>
             </div>

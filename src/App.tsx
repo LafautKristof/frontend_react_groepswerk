@@ -5,10 +5,10 @@ import Home from "./pages/Home";
 import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import DetailPage from "./pages/DetailPage";
+import CheckoutCart from "./pages/CheckoutCart";
 import { AuthProvider } from "./context/authContext";
 import { WishListProvider } from "./context/wishListContext";
 import { CartProvider } from "./context/cartContext";
-import React from "react";
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/about" element={<About />} />
+              <Route path="/checkout" element={<CheckoutCart />} />
 
               <Route path="/detailpage/:id" element={<DetailPage />} />
             </Routes>

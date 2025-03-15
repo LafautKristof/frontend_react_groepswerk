@@ -7,19 +7,16 @@ import OurProductsTop from "../components/OurProductsTop";
 import OurProductsBottom from "../components/OurProductsBottom";
 import TopFilter from "../components/TopFilter";
 import BlackButtons from "../components/BlackButtons";
-import About from "../pages/About";
-
 import { FaTruck } from "react-icons/fa6";
 import { BiSupport } from "react-icons/bi";
 import { IoShieldCheckmark } from "react-icons/io5";
-import React from "react";
+
 const Home = () => {
   return (
     <>
       <div className="filter_banner">
         <TopFilter />
         <TopBanner />
-        <About />
       </div>
       <div className="today">
         <Timer date="2025-03-25T17:00:00" />

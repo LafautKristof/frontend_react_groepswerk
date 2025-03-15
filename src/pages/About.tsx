@@ -1,9 +1,8 @@
-import React from "react";
 import styles from "../css/About.module.css";
 
 const About = () => {
   return (
-    <main>
+    <main className={styles.aboutPage}>
       <p className={styles.smallNav}>
         About <span>/</span> Home
       </p>
