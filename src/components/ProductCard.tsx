@@ -3,6 +3,11 @@ import { IoHeartOutline, IoCartOutline } from "react-icons/io5";
 import StarRating from "./StarRating";
 import { Link } from "react-router";
 import { slugit } from "../utils/helpers";
+import { useSelector, useDispatch } from "react-redux";
+import { addToWishList } from "./store/wishlistSlice";
+import { addToCart } from "./store/cartSlice";
+import { AuthContext } from "../context/authContext";
+import { useContext } from "react";
 type ObjectId = string;
 type Product = {
     _id: ObjectId;
@@ -25,8 +30,23 @@ type ProductCardProps = {
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-    console.log(product);
     const productRating = product.points / Number(product.raters);
+
+    const dispatch = useDispatch();
+    const { user } = useContext(AuthContext);
+
+    const handleAddToWishlist = (product: Product) => {
+        dispatch(addToWishList(product));
+    };
+    const handleAddToCart = (product: Product) => {
+        console.log("user", user);
+        if (!user) {
+            alert("You need to be logged in to add products to your cart.");
+        } else {
+            console.log("2", product);
+            dispatch(addToCart(product));
+        }
+    };
     return (
         <Link
             to={`/detailpage/${product._id}/${slugit(product.name)})`}
@@ -47,6 +67,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                             e.preventDefault();
                             e.stopPropagation();
 
+                            handleAddToWishlist(product);
+
                             console.log("Heart clicked!");
                         }}
                     >
@@ -57,7 +79,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            // Voeg hier de logica toe voor de 'watch'-klik, als gewenst
+                            handleAddToCart(product);
                             console.log("Watch clicked!");
                         }}
                     >

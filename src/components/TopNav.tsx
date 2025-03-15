@@ -14,13 +14,15 @@ import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { useContext, useRef } from "react";
 import { AuthContext } from "../context/authContext";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 const TopNav = () => {
     const { token, setToken } = useContext(AuthContext);
     const { user, setUser } = useContext(AuthContext);
     const [isDropDown, setIsDropDown] = useState(false);
     const dropDownRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
-
+    const wishList = useSelector((state: any) => state.wishList);
+    const cart = useSelector((state: any) => state.cart);
     const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
         setUser(null);
@@ -73,14 +75,18 @@ const TopNav = () => {
                             <Link to="/favorites">
                                 <IoHeartOutline className={styles.heart} />
                             </Link>
+                            {wishList.length > 0 && (
+                                <span>{wishList.length}</span>
+                            )}
                         </div>
                         <div className={styles.divCart}>
                             <Link to="/cart">
                                 <IoCartOutline
                                     className={styles.cart}
                                     onClick={handleClick}
-                                />
-                            </Link>
+                                />{" "}
+                            </Link>{" "}
+                            {cart.length > 0 && <span>{cart.length}</span>}
                         </div>
                         {token && (
                             <>
