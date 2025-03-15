@@ -1,10 +1,10 @@
 import ProfileEdit from "../components/ProfileEdit";
 
-const Profile_Edit = () => {
+const MyAccount = () => {
     return (
         <div>
             <ProfileEdit />
         </div>
     );
 };
-export default Profile_Edit;
+export default MyAccount;
