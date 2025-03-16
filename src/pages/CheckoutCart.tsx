@@ -3,10 +3,11 @@ import styles from "../css/Cart.module.css";
 const CheckoutCart = () => {
   return (
     <>
-      <Link className={styles.link} to="/">
-        Home / Cart
-      </Link>
       <main>
+        <p className={styles.link}>
+          {" "}
+          <Link to="/">Home / Cart</Link>{" "}
+        </p>
         <ul>
           <li>Product</li>
           <li>Price</li>

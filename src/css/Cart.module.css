@@ -2,7 +2,17 @@ body {
     .link {
         text-decoration: none;
         color: grey;
-        padding: 4rem;
+        margin-top: 4rem;
+
+        a {
+            text-decoration: none;
+            color: grey;
+            cursor: pointer;
+
+            &:hover {
+                color: black;
+            }
+        }
 
     }
 
@@ -55,10 +65,19 @@ body {
                 text-decoration: none;
                 border: 1px solid black;
 
+                &:hover {
+                    background-color: #DB4444;
+                    border: none;
+                }
+
                 p {
                     cursor: pointer;
                     color: black;
                     padding: 1rem;
+
+                    &:hover {
+                        color: white;
+                    }
                 }
             }
 
