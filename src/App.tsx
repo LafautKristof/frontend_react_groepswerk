@@ -9,6 +9,7 @@ import MyAccount from "./pages/ProfileEdit";
 import { AuthProvider } from "./context/authContext";
 import { WishListProvider } from "./context/wishListContext";
 import { CartProvider } from "./context/cartContext";
+import OverviewPage from "./pages/OverviewPage";
 
 function App() {
     return (
@@ -25,10 +26,10 @@ function App() {
                                 path="/detailpage/:id/:slug"
                                 element={<DetailPage />}
                             />
-                            {/* <Route
+                            <Route
                                 path="/allproduct/:item"
-                                element={<AllProductPage />}
-                            /> TODO!!!!!!!!!!!!!!!!!!!!!!*/}
+                                element={<OverviewPage />}
+                            />
                             <Route
                                 path="/checkout"
                                 element={<CheckoutForm />}

@@ -10,7 +10,7 @@ const productsApi = createApi({
             query: (id) => `/random/${id}`,
         }),
         getAllProducts: builder.query({
-            query: (item: string) => `${item}`,
+            query: (item: string) => `/${item}`,
         }),
     }),
 });
