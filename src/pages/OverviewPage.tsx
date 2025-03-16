@@ -3,15 +3,16 @@ import { useGetAllProductsQuery } from "../components/store/productsApi";
 import { useParams } from "react-router-dom";
 const OverviewPage = () => {
     const { item } = useParams<{ item: string }>();
-    console.log("2", item);
     const { data, error, isLoading } = useGetAllProductsQuery(item || "");
-    console.log("dataaa", data);
-    if (error) return <div>Error loading products</div>;
+    console.log("item", item);
     if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error occurred</div>;
+
     return (
         <div>
             <Overview product={data} />
         </div>
     );
 };
+
 export default OverviewPage;

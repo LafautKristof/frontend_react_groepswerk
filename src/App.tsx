@@ -27,6 +27,10 @@ function App() {
                                 element={<DetailPage />}
                             />
                             <Route
+                                path="/allproduct/"
+                                element={<OverviewPage />}
+                            />
+                            <Route
                                 path="/allproduct/:item"
                                 element={<OverviewPage />}
                             />

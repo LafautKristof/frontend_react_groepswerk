@@ -45,7 +45,12 @@ const Grid1Row = () => {
                 <button className={styles.arrowLeft} onClick={scrollLeft}>
                     <IoArrowBackOutline />
                 </button>
-                <button className={styles.viewAll}>View All Products</button>
+                <button
+                    onClick={() => (window.location.href = "/allproduct")}
+                    className={styles.viewAll}
+                >
+                    View All Products
+                </button>
                 <button className={styles.arrowRight} onClick={scrollRight}>
                     <IoArrowForwardOutline />
                 </button>

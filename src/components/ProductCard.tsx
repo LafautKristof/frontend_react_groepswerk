@@ -3,32 +3,13 @@ import { IoHeartOutline, IoCartOutline } from "react-icons/io5";
 import StarRating from "./StarRating";
 import { Link } from "react-router";
 import { slugit } from "../utils/helpers";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToWishList } from "./store/wishlistSlice";
 import { AuthContext } from "../context/authContext";
 import { useContext } from "react";
 import { useAddToCartMutation } from "./store/cartApi";
 import { addToCart } from "./store/cartSlice";
-type ObjectId = string;
-type Product = {
-    _id: ObjectId;
-    name: string;
-    brand: string;
-    price: number;
-    capacity: string;
-    speed: string;
-    type: string;
-    latency: string;
-    rgb: string;
-    description: string;
-    images: string[];
-    raters: string;
-    points: number;
-};
-
-type ProductCardProps = {
-    product: Product;
-};
+import { ProductCardProps, Product } from "../utils/types";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const productRating = product.points / Number(product.raters);
