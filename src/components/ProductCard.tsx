@@ -25,7 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         if (!user) {
             alert("You need to be logged in to add products to your cart.");
         } else {
-            console.log(user);
+            console.log("5", product);
             try {
                 await addToCartMutation({ product, user }).unwrap();
                 dispatch(addToCart(product));

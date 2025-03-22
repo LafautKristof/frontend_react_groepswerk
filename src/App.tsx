@@ -10,6 +10,9 @@ import { AuthProvider } from "./context/authContext";
 import { WishListProvider } from "./context/wishListContext";
 import { CartProvider } from "./context/cartContext";
 import OverviewPage from "./pages/OverviewPage";
+import WishlistPage from "./pages/WishListPage";
+import CartPage from "./pages/CartPage";
+import Page404 from "./pages/Page404";
 
 function App() {
     return (
@@ -39,6 +42,12 @@ function App() {
                                 element={<CheckoutForm />}
                             />
                             <Route path="/myaccount" element={<MyAccount />} />
+                            <Route
+                                path="/wishlist"
+                                element={<WishlistPage />}
+                            />
+                            <Route path="/cart" element={<CartPage />} />
+                            <Route path="*" element={<Page404 />} />
                         </Routes>
                     </Layout>
                 </WishListProvider>

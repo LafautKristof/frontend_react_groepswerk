@@ -72,7 +72,7 @@ const TopNav = () => {
                     </div>
                     <i className={styles.icons}>
                         <div className={styles.divHeart}>
-                            <Link to="/favorites">
+                            <Link to="/wishlist">
                                 <IoHeartOutline className={styles.heart} />
                             </Link>
                             {wishList.length > 0 && (

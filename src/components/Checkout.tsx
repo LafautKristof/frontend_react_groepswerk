@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "../css/Checkout.module.css";
 
+import { useSelector } from "react-redux";
 const CheckoutForm: React.FC = () => {
+    const cart = useSelector((state: any) => state.cart);
     return (
         <div className={styles.checkout_container}>
             <div className={styles.billing_details}>
@@ -48,35 +50,24 @@ const CheckoutForm: React.FC = () => {
             </div>
 
             <div className={styles.order_summary}>
-                <div className={styles.order_item}>
-                    <div className={styles.img}>
-                        <img
-                            src="src\assets\images\1200x1046.jpg"
-                            alt="LCD Monitor"
-                        />
+                {cart?.map((cartItem: any) => (
+                    <div key={cartItem._id} className={styles.order_item}>
+                        <div className={styles.img}>
+                            <img src={cartItem.images[0]} alt="LCD Monitor" />
+                        </div>
+                        <div className={styles.info}>
+                            <p>{cartItem.name}</p>
+                            <p>{cartItem.price}</p>
+                        </div>
                     </div>
-                    <div className={styles.info}>
-                        <p>LCD Monitor</p>
-                        <p>$650</p>
-                    </div>
-                </div>
+                ))}
 
-                <div className={styles.order_item}>
-                    <div className={styles.img}>
-                        <img
-                            src="src\assets\images\1200x1046.jpg"
-                            alt="Gamepad"
-                        />
-                    </div>
-                    <div className={styles.info}>
-                        <p>HI Gamepad</p>
-                        <p>$1100</p>
-                    </div>
-                </div>
                 <div className={styles.order_total}>
                     <span>Subtotal:</span>
 
-                    <span>$1750</span>
+                    <span>
+                        ${cart?.reduce((total, item) => total + item.price, 0)}
+                    </span>
                 </div>
                 <hr />
                 <div className={styles.order_total}>
@@ -86,7 +77,13 @@ const CheckoutForm: React.FC = () => {
                 <hr />
                 <div className={styles.order_total}>
                     <span>Total:</span>
-                    <span>$1750</span>
+                    <span>
+                        $
+                        {cart?.reduce(
+                            (total, item) => total + item.price * item.quantity,
+                            0
+                        )}
+                    </span>
                 </div>
                 <div className={styles.payment_method}>
                     <label>

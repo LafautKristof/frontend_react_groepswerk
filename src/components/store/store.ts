@@ -11,10 +11,11 @@ export const store = configureStore({
         [cartApi.reducerPath]: cartApi.reducer,
         wishList: wishListSlice,
         cart: cartSlice,
+        quantity: cartSlice,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
-            logger,
+            // logger,
             productsApi.middleware,
             cartApi.middleware
         ),

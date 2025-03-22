@@ -28,14 +28,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             const userWithCart = user as any;
             if (userWithCart.cart && userWithCart.cart.length > 0) {
                 setCart(userWithCart.cart);
-                localStorage.setItem("cart", JSON.stringify(userWithCart.cart));
             } else {
                 setCart([]);
-                localStorage.setItem("cart", JSON.stringify([]));
             }
         } else {
             setCart(null);
-            localStorage.removeItem("cart");
         }
     }, [user, token]);
     return (
