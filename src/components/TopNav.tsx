@@ -27,6 +27,7 @@ const TopNav = () => {
         e.preventDefault();
         setUser(null);
         setToken(null);
+
         navigate("/login");
     };
     const handleClick = () => {

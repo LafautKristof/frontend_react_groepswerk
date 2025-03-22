@@ -76,22 +76,37 @@ const Cart = () => {
                     ))}
                 </table>
 
-                <div>
-                    <button>return to shop</button> <button>updatecart</button>
-                    <button>deleteCart</button>
+                <div className={styles.buttons}>
+                    <button onClick={() => (window.location.href = "/")}>
+                        Return to shop
+                    </button>{" "}
+                    <button>Delete Cart</button>
                 </div>
-                <div>
-                    cartotal subtotaal ={" "}
-                    {cart
-                        .reduce((total, item) => total + item.price, 0)
-                        .toFixed(2)}
-                    shipping: free total:{" "}
-                    {cart
-                        .reduce(
-                            (total, item) => total + item.price * item.quantity,
-                            0
-                        )
-                        .toFixed(2)}
+                <div className={styles.total}>
+                    <h2>Cart Total</h2>
+                    <div>
+                        <h3>Subtotal: </h3>
+                        <p>
+                            {cart
+                                .reduce((total, item) => total + item.price, 0)
+                                .toFixed(2)}
+                        </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <h3>Shipping:</h3> <p>free </p>
+                    </div>
+                    <hr />
+                    <div>
+                        <h3>Total:</h3>
+                        {cart
+                            .reduce(
+                                (total, item) =>
+                                    total + item.price * item.quantity,
+                                0
+                            )
+                            .toFixed(2)}
+                    </div>
                     <Link to="/checkout">
                         <button>Process to checkout</button>
                     </Link>

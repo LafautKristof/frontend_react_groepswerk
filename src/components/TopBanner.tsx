@@ -7,11 +7,11 @@ const slidesData = [
         text: "Up to 10% off Voucher",
     },
     {
-        image: "../src/assets/images/istockphoto-1278212179-2048x2048.jpg",
+        image: "../src/assets/images/banner2.jpg",
         text: "Limited Time Offer!",
     },
     {
-        image: "../src/assets/images/istockphoto-1278212229-2048x2048.jpg",
+        image: "../src/assets/images/banner3.jpg",
         text: "Shop Now & Save Big!",
     },
 ];
@@ -33,12 +33,10 @@ const TopBanner = () => {
 
     return (
         <div className={styles.topBanner}>
-            {/* Dynamische tekst die verandert per slide */}
             <div className={styles.tekst}>
                 <h1>{slidesData[index].text}</h1>
             </div>
 
-            {/* Foto Slider */}
             <div className={styles.fotoslider}>
                 <div
                     className={styles.slides}
@@ -52,7 +50,6 @@ const TopBanner = () => {
                 </div>
             </div>
 
-            {/* 🔵 Bolletjes onder de slider */}
             <div className={styles.dots}>
                 {slidesData.map((_, i) => (
                     <span
