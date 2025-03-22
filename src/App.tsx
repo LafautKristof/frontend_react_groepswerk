@@ -13,6 +13,7 @@ import OverviewPage from "./pages/OverviewPage";
 import WishlistPage from "./pages/WishListPage";
 import CartPage from "./pages/CartPage";
 import Page404 from "./pages/Page404";
+import Contact from "./components/Contact";
 
 function App() {
     return (
@@ -47,6 +48,7 @@ function App() {
                                 element={<WishlistPage />}
                             />
                             <Route path="/cart" element={<CartPage />} />
+                            <Route path="/contact" element={<Contact />} />
                             <Route path="*" element={<Page404 />} />
                         </Routes>
                     </Layout>
