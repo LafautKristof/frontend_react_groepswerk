@@ -6,7 +6,12 @@ const Comp404 = () => {
             <p className={styles.text}>
                 Your visited page not found. You may go home page
             </p>
-            <button className={styles.button}>Back to home page</button>
+            <button
+                className={styles.button}
+                onClick={() => (window.location.href = "/")}
+            >
+                Back to home page
+            </button>
         </div>
     );
 };
