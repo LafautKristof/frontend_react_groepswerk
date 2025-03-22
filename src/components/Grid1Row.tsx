@@ -2,7 +2,8 @@ import styles from "../css/Grid1Row.module.css";
 import { IoArrowBackOutline, IoArrowForwardOutline } from "react-icons/io5";
 import { useRef } from "react";
 import ProductCard from "./ProductCard";
-
+import ErrorComponent from "./ErrorComponent";
+import LoadingComponent from "./LoadingComponent";
 import { useGetProductsRandomQuery } from "./store/productsApi";
 
 const Grid1Row = () => {
@@ -21,8 +22,18 @@ const Grid1Row = () => {
             sliderRef.current.scrollBy({ left: 250, behavior: "smooth" });
         }
     };
-    if (error) return <div>Error loading products</div>;
-    if (isLoading) return <div>Loading...</div>;
+    if (error)
+        return (
+            <div>
+                <ErrorComponent />
+            </div>
+        );
+    if (isLoading)
+        return (
+            <div>
+                <LoadingComponent />
+            </div>
+        );
     return (
         <>
             <div className={styles.slider_container}>

@@ -7,7 +7,7 @@ const TopFilter = () => {
                 <ul>
                     <Link to="/allproduct/computerscreen">Computerscreen</Link>
                     <Link to="/allproduct/headphones">Headphone</Link>
-                    <Link to="/allproduct/keyboard">Keayboard</Link>
+                    <Link to="/allproduct/keyboard">Keyboard</Link>
                     <Link to="/allproduct/mouse">Mouse</Link>
                     <Link to="/allproduct/ram">RAM</Link>
                     <Link to="/allproduct/videocard">Videocard</Link>
