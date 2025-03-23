@@ -2,8 +2,9 @@ import React from "react";
 import styles from "../css/Checkout.module.css";
 
 import { useSelector } from "react-redux";
+import { RootState } from "./store/store";
 const CheckoutForm: React.FC = () => {
-    const cart = useSelector((state: any) => state.cart);
+    const cart = useSelector((state: RootState) => state.cart);
     return (
         <div className={styles.checkout_container}>
             <div className={styles.billing_details}>
@@ -50,7 +51,7 @@ const CheckoutForm: React.FC = () => {
             </div>
 
             <div className={styles.order_summary}>
-                {cart?.map((cartItem: any) => (
+                {cart.items.map((cartItem: any) => (
                     <div key={cartItem._id} className={styles.order_item}>
                         <div className={styles.img}>
                             <img src={cartItem.images[0]} alt="LCD Monitor" />
@@ -66,7 +67,11 @@ const CheckoutForm: React.FC = () => {
                     <span>Subtotal:</span>
 
                     <span>
-                        ${cart?.reduce((total, item) => total + item.price, 0)}
+                        $
+                        {cart.items.reduce(
+                            (total, item) => total + item.price,
+                            0
+                        )}
                     </span>
                 </div>
                 <hr />
@@ -79,7 +84,7 @@ const CheckoutForm: React.FC = () => {
                     <span>Total:</span>
                     <span>
                         $
-                        {cart?.reduce(
+                        {cart.items.reduce(
                             (total, item) => total + item.price * item.quantity,
                             0
                         )}

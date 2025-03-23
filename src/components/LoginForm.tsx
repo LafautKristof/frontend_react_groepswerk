@@ -1,8 +1,6 @@
 import styles from "../css/LoginForm.module.css";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-import { useDispatch } from "react-redux";
 import { AuthContext } from "../context/authContext";
 import { useLoginUserMutation } from "./store/authApi";
 const LoginForm = () => {
@@ -10,7 +8,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [loginUser] = useLoginUserMutation();
-    const dispatch = useDispatch();
+
     const navigate = useNavigate();
     const { setUser } = useContext(AuthContext);
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -27,6 +25,7 @@ const LoginForm = () => {
             setUser(result.user);
             navigate("/");
         } catch (err) {
+            setErrorMessage("Login mislukt");
             console.error("Login mislukt:", err);
         }
     };

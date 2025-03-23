@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "./store";
 
 const savedWishlist = localStorage.getItem("wishlist");
 const initialState = savedWishlist ? JSON.parse(savedWishlist) : [];

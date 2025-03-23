@@ -6,8 +6,8 @@ import { slugit } from "../utils/helpers";
 import { useDispatch } from "react-redux";
 import { addToWishList, deleteProduct } from "./store/wishlistSlice";
 import { useAddToCartMutation } from "./store/cartApi";
-import { useSelector } from "react-redux";
-import { ProductCardProps, Product, CartItem } from "../utils/types";
+
+import { ProductCardProps, Product } from "../utils/types";
 import { setCart } from "./store/cartSlice";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
@@ -25,18 +25,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const handleAddToWishlist = (product: Product) => {
         dispatch(addToWishList(product));
     };
-    const handleAddToCart = async (product: Product) => {
+    const newPrice = product.price - (product.sale / 100) * product.price;
+
+    const handleAddToCart = async (product: any) => {
         if (!user) {
-            console.log("user", user);
             return;
         }
         try {
-            console.log("product", product);
-            console.log("user", user);
             const response = await addToCart({ product, user }).unwrap();
-            console.log("responsepdcard", response);
-            const cartItems = response.cart;
-            dispatch(setCart(cartItems));
+            const items = response;
+            console.log(items);
+            dispatch(setCart(items.cart));
         } catch (error) {
             console.log(error);
         }
@@ -54,7 +53,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         alt="Product afbeelding"
                     />
 
-                    <p>-40%</p>
+                    <p>-{product.sale}%</p>
                     <i
                         className={styles.heart}
                         onClick={(e) => {
@@ -80,8 +79,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 <div className={styles.info}>
                     <h2>{product?.name}</h2>
                     <div className={styles.price}>
-                        <p className={styles.new_price}>{product?.price}</p>
-                        <p className={styles.old_price}>$7.99</p>
+                        <p className={styles.new_price}>{product.price}</p>
+                        <p className={styles.old_price}>
+                            {newPrice.toFixed(2)}
+                        </p>
                     </div>
                     <div className={styles.rating}>
                         <StarRating rating={productRating} />

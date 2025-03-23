@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import logger from "redux-logger";
+
 import productsApi from "./productsApi";
 import cartApi from "./cartApi";
 import authApi from "./authApi";

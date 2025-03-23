@@ -21,12 +21,11 @@ const TopBanner = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex((prevIndex) => (prevIndex + 1) % slidesData.length);
-        }, 3000); // Verandert elke 3 seconden
+        }, 3000);
 
         return () => clearInterval(interval);
     }, []);
 
-    // Functie om op bolletjes te klikken
     const goToSlide = (slideIndex: SetStateAction<number>) => {
         setIndex(slideIndex);
     };

@@ -9,7 +9,7 @@ import { Product } from "../utils/types";
 const Grid1Row = () => {
     const sliderRef = useRef<HTMLDivElement>(null);
     const { data, error, isLoading } = useGetProductsRandomQuery(10);
-    console.log("data", data);
+
     const products: Product[] = data ? data.data : [];
 
     const scrollLeft = () => {

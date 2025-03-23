@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CartItem, CartState, Product } from "../../utils/types";
+import { CartItem, CartState } from "../../utils/types";
 
 let persistedCart = localStorage.getItem("cart");
 let initialItems: CartItem[] = [];
@@ -29,7 +29,7 @@ const cartSlice = createSlice({
     initialState,
 
     reducers: {
-        increment: (state, action: PayloadAction<Product>) => {
+        increment: (state, action: PayloadAction<any>) => {
             const id = action.payload;
             const product = state.items.find(
                 (cartItem: any) => cartItem._id === id
@@ -52,7 +52,7 @@ const cartSlice = createSlice({
         clearCart: (state) => {
             state.items = [];
         },
-        setCart: (state, action: PayloadAction<CartItem[]>) => {
+        setCart: (state, action: PayloadAction<any>) => {
             state.items = action.payload;
         },
         deleteProductSlice: (state, action) => {

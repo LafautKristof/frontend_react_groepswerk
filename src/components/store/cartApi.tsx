@@ -1,10 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import {
-    Product,
-    AddToCartResponse,
-    AddToCartRequest,
-} from "../../utils/types";
-import { clearCart } from "./cartSlice";
+import { AddToCartResponse, AddToCartRequest } from "../../utils/types";
 
 const cartApi = createApi({
     reducerPath: "cartApi",

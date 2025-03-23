@@ -21,6 +21,8 @@ export type Product = {
     refresh_rate?: string;
     panel?: string;
     response_time?: string;
+    sale: number;
+    quantiy?: number;
 };
 
 export type ProductsResponse = {
@@ -67,6 +69,6 @@ export interface CartItem extends Product {
     quantity: number;
 }
 
-export interface CartState {
+export type CartState = {
     items: CartItem[];
-}
+};

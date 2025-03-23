@@ -21,12 +21,13 @@ const TopNav = () => {
     const token = localStorage.getItem("token");
     const user = useSelector((state: RootState) => state.auth.user);
     const [isDropDown, setIsDropDown] = useState(false);
+    console.log(isDropDown);
     const dropDownRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
     const wishList = useSelector((state: RootState) => state.wishList);
     const cart = useSelector((state: RootState) => state.cart);
     const dispatch = useDispatch();
-    const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const handleLogout = () => {
         localStorage.removeItem("token");
         dispatch(clearUser());
 
