@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { ProductsResponse } from "../../utils/types";
 
 const productsApi = createApi({
     reducerPath: "productsApi",
@@ -7,7 +8,7 @@ const productsApi = createApi({
         baseUrl: "https://backend-node-groepswerk.onrender.com/api/products/",
     }),
     endpoints: (builder) => ({
-        getProductsRandom: builder.query({
+        getProductsRandom: builder.query<ProductsResponse, number>({
             query: (id) => `/random/${id}`,
             providesTags: ["Product"],
         }),

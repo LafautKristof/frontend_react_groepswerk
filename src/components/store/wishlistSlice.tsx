@@ -16,8 +16,17 @@ const wishListSlice = createSlice({
                 ...action.payload,
             });
         },
+        deleteAll: (state) => {
+            state.length = 0;
+        },
+        deleteProduct: (state, action) => {
+            return state.filter(
+                (product: any) => product._id !== action.payload
+            );
+        },
     },
 });
 
-export const { addToWishList } = wishListSlice.actions;
+export const { addToWishList, deleteProduct, deleteAll } =
+    wishListSlice.actions;
 export default wishListSlice.reducer;

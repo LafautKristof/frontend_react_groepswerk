@@ -1,50 +1,33 @@
 import styles from "../css/LoginForm.module.css";
-import { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
 import { AuthContext } from "../context/authContext";
+import { useLoginUserMutation } from "./store/authApi";
 const LoginForm = () => {
-    const [emailPhoneValue, setEmailPhoneValue] = useState("");
-    const [passwordValue, setPasswordValue] = useState("");
+    const [emailPhone, setEmailPhone] = useState("");
+    const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const [loginUser] = useLoginUserMutation();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { setToken, setUser } = useContext(AuthContext);
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        if (name === "email_phone") {
-            setEmailPhoneValue(value);
-        } else if (name === "password") {
-            setPasswordValue(value);
-        }
-        console.log(emailPhoneValue, passwordValue);
-    };
+    const { setUser } = useContext(AuthContext);
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(emailPhoneValue, passwordValue);
-        const response = await fetch(
-            "https://backend-node-groepswerk.onrender.com/api/auth/login",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email_phone: emailPhoneValue,
-                    password: passwordValue,
-                }),
-            }
-        );
-        const data = await response.json();
+        try {
+            console.log("Inloggen:", emailPhone, password);
+            const result = await loginUser({
+                email_phone: emailPhone,
+                password,
+            }).unwrap();
+            localStorage.setItem("user", JSON.stringify(result.user));
+            localStorage.setItem("token", result.token); // Hier kun je de token opslaan (bijv. in localStorage) en de user in je state zetten
 
-        if (response.ok) {
-            console.log(data);
-            setToken(data.token);
-            setUser(data.user);
-            setEmailPhoneValue("");
-            setPasswordValue("");
+            setUser(result.user);
             navigate("/");
-        } else {
-            console.log("error");
-            setErrorMessage("Something went wrong. Please try again.");
+        } catch (err) {
+            console.error("Login mislukt:", err);
         }
     };
 
@@ -56,13 +39,13 @@ const LoginForm = () => {
             <form onSubmit={handleSubmit}>
                 <input
                     name="email_phone"
-                    onChange={handleChange}
+                    onChange={(e) => setEmailPhone(e.target.value)}
                     type="text"
                     placeholder="Email of Phone Number"
                 />
                 <input
                     name="password"
-                    onChange={handleChange}
+                    onChange={(e) => setPassword(e.target.value)}
                     type="text"
                     placeholder="Password"
                 />

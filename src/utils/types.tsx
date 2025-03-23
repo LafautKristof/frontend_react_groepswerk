@@ -1,20 +1,72 @@
 export type ObjectId = string;
+
 export type Product = {
     _id: ObjectId;
     name: string;
-    brand: string;
+    brand?: string;
     price: number;
-    capacity: string;
-    speed: string;
-    type: string;
-    latency: string;
-    rgb: string;
+    type?: string;
+    switches?: string;
+    connectivity?: string | string[];
+    rgb?: boolean;
     description: string;
     images: string[];
-    raters: string;
+    raters: number;
     points: number;
+    color?: string | string[];
+    dpi?: number;
+    noise_cancelling?: boolean;
+    size?: string;
+    resolution?: string;
+    refresh_rate?: string;
+    panel?: string;
+    response_time?: string;
+};
+
+export type ProductsResponse = {
+    data: Product[];
 };
 
 export type ProductCardProps = {
     product: Product;
 };
+
+export type LoginResponse = {
+    message: string;
+    user: User;
+    token: string;
+};
+
+export type LoginCredentials = {
+    email_phone: string;
+    password: string;
+};
+
+export type User = {
+    _id: string;
+    name: string;
+    email_phone: string;
+    cart: CartItem[];
+    role: string;
+};
+
+export type AuthState = {
+    user: User | null;
+};
+
+export type AddToCartRequest = {
+    product: Product;
+    user: any;
+};
+
+export type AddToCartResponse = {
+    success: boolean;
+    cart: Product[]; // of wat je server terugstuurt
+};
+export interface CartItem extends Product {
+    quantity: number;
+}
+
+export interface CartState {
+    items: CartItem[];
+}

@@ -1,43 +1,69 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { CartItem, CartState, Product } from "../../utils/types";
 
-const savedCart = localStorage.getItem("cart");
-const initialState = savedCart !== null ? JSON.parse(savedCart) : [];
+let persistedCart = localStorage.getItem("cart");
+let initialItems: CartItem[] = [];
+const initialState: CartState = {
+    items: initialItems,
+};
+
+if (persistedCart) {
+    try {
+        const parsed = JSON.parse(persistedCart);
+
+        if (parsed.items && Array.isArray(parsed.items)) {
+            initialItems = parsed.items;
+        } else if (Array.isArray(parsed)) {
+            initialItems = parsed;
+        }
+    } catch (error) {
+        console.error(
+            "Fout bij het parsen van de cart uit localStorage:",
+            error
+        );
+    }
+}
+
 const cartSlice = createSlice({
     name: "cart",
     initialState,
-    reducers: {
-        addToCart: (state, action: PayloadAction<any>) => {
-            console.log("2", action.payload);
 
-            const productExists = state.find(
-                (product) => product._id === action.payload._id
-            );
-            console.log("3", productExists);
-            if (productExists) return;
-            state.push({ ...action.payload, quantity: 1 });
-        },
-        increment: (state, action: PayloadAction<any>) => {
-            console.log("4", action.payload);
-            console.log("state", state);
+    reducers: {
+        increment: (state, action: PayloadAction<Product>) => {
             const id = action.payload;
-            const product = state.find((cartItem: any) => cartItem._id === id);
+            const product = state.items.find(
+                (cartItem: any) => cartItem._id === id
+            );
 
             if (product) {
                 product.quantity += 1;
             }
         },
         decrement: (state, action: PayloadAction<any>) => {
-            console.log("4", action.payload);
-            console.log("state", state);
             const id = action.payload;
-            const product = state.find((cartItem: any) => cartItem._id === id);
+            const product = state.items.find(
+                (cartItem: any) => cartItem._id === id
+            );
 
             if (product && product.quantity > 1) {
                 product.quantity -= 1;
             }
         },
+        clearCart: (state) => {
+            state.items = [];
+        },
+        setCart: (state, action: PayloadAction<CartItem[]>) => {
+            state.items = action.payload;
+        },
+        deleteProductSlice: (state, action) => {
+            const id = action.payload;
+            state.items = state.items.filter(
+                (product: any) => product._id !== id
+            );
+        },
     },
 });
 
-export const { addToCart, increment, decrement } = cartSlice.actions;
+export const { increment, decrement, clearCart, setCart, deleteProductSlice } =
+    cartSlice.actions;
 export default cartSlice.reducer;

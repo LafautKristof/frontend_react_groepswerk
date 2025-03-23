@@ -11,11 +11,10 @@ import { AuthContext } from "../context/authContext";
 import { useDispatch } from "react-redux";
 import { addToWishList } from "./store/wishlistSlice";
 import { useAddToCartMutation } from "./store/cartApi";
-import { addToCart } from "./store/cartSlice";
-
+import { setCart } from "./store/cartSlice";
 const DetailProduct: React.FC<ProductCardProps> = ({ product }) => {
     const productRating = product.points / Number(product.raters);
-    const [addToCartMutation] = useAddToCartMutation();
+    const [addToCart] = useAddToCartMutation();
 
     const dispatch = useDispatch();
     const { user } = useContext(AuthContext);
@@ -26,14 +25,21 @@ const DetailProduct: React.FC<ProductCardProps> = ({ product }) => {
     const handleAddToCart = async (product: Product) => {
         if (!user) {
             alert("You need to be logged in to add products to your cart.");
-        } else {
-            console.log(user);
-            try {
-                await addToCartMutation({ product, user }).unwrap();
-                dispatch(addToCart(product));
-            } catch (error) {
-                console.log(error);
-            }
+            return;
+        }
+        try {
+            // Voer de API-call uit en krijg de bijgewerkte cart van de backend
+            const response = await addToCart({ product, user }).unwrap();
+            console.log("respons detail", response);
+            const cartItems = response.cart.map((product: Product) => ({
+                ...product,
+                quantity: 1,
+            }));
+            console.log("cartItems detail", cartItems);
+            // Update de lokale Redux state met de volledige cart
+            dispatch(setCart(cartItems));
+        } catch (error) {
+            console.error("Error adding to cart:", error);
         }
     };
     return (

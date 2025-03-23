@@ -4,39 +4,46 @@ import StarRating from "./StarRating";
 import { Link } from "react-router";
 import { slugit } from "../utils/helpers";
 import { useDispatch } from "react-redux";
-import { addToWishList } from "./store/wishlistSlice";
-import { AuthContext } from "../context/authContext";
-import { useContext } from "react";
+import { addToWishList, deleteProduct } from "./store/wishlistSlice";
 import { useAddToCartMutation } from "./store/cartApi";
-import { addToCart } from "./store/cartSlice";
-import { ProductCardProps, Product } from "../utils/types";
+import { useSelector } from "react-redux";
+import { ProductCardProps, Product, CartItem } from "../utils/types";
+import { setCart } from "./store/cartSlice";
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
+import { RiDeleteBin7Line } from "react-icons/ri";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const productRating = product.points / Number(product.raters);
-    const [addToCartMutation] = useAddToCartMutation();
+    const [addToCart] = useAddToCartMutation();
 
     const dispatch = useDispatch();
     const { user } = useContext(AuthContext);
-
+    const handleDeleteProduct = (product: Product) => {
+        dispatch(deleteProduct(product._id));
+    };
     const handleAddToWishlist = (product: Product) => {
         dispatch(addToWishList(product));
     };
     const handleAddToCart = async (product: Product) => {
         if (!user) {
-            alert("You need to be logged in to add products to your cart.");
-        } else {
-            console.log("5", product);
-            try {
-                await addToCartMutation({ product, user }).unwrap();
-                dispatch(addToCart(product));
-            } catch (error) {
-                console.log(error);
-            }
+            console.log("user", user);
+            return;
+        }
+        try {
+            console.log("product", product);
+            console.log("user", user);
+            const response = await addToCart({ product, user }).unwrap();
+            console.log("responsepdcard", response);
+            const cartItems = response.cart;
+            dispatch(setCart(cartItems));
+        } catch (error) {
+            console.log(error);
         }
     };
     return (
         <Link
-            to={`/detailpage/${product._id}/${slugit(product.name)})`}
+            to={`/detailpage/${product._id}/${slugit(product.name)}`}
             state={{ product }}
         >
             <div className={styles.grid}>
@@ -55,8 +62,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                             e.stopPropagation();
 
                             handleAddToWishlist(product);
-
-                            console.log("Heart clicked!");
                         }}
                     >
                         <IoHeartOutline />
@@ -67,7 +72,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                             e.preventDefault();
                             e.stopPropagation();
                             handleAddToCart(product);
-                            console.log("Watch clicked!");
                         }}
                     >
                         <IoCartOutline />
@@ -83,6 +87,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         <StarRating rating={productRating} />
                         <p>{product?.raters}</p>
                     </div>
+                    {window.location.pathname === "/wishlist" && (
+                        <RiDeleteBin7Line
+                            className={styles.delete}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                handleDeleteProduct(product);
+                            }}
+                        />
+                    )}
+
+                    <div></div>
                 </div>
             </div>
         </Link>

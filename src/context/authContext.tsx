@@ -1,57 +1,40 @@
-import { createContext, useState, useEffect, ReactNode } from "react";
-
-type User = {
-    id: string;
-    name: string;
-    role: string;
-};
-type AuthContextType = {
-    token: string | null;
-    setToken: (token: string | null) => void;
-    user: User | null;
+// context/AuthContext.tsx
+import React, { createContext, useState, useEffect } from "react";
+import { User } from "../utils/types";
+interface AuthContextType {
+    user: any; // Pas het type aan, bijvoorbeeld: User | null
     setUser: (user: User | null) => void;
-};
+}
 
 export const AuthContext = createContext<AuthContextType>({
-    token: null,
-    setToken: () => {},
     user: null,
     setUser: () => {},
 });
 
-type AuthProviderProps = {
-    children: ReactNode;
-};
+interface AuthProviderProps {
+    children: React.ReactNode;
+}
 
-export const AuthProvider = ({ children }: AuthProviderProps) => {
-    const [token, setToken] = useState<string | null>(() =>
-        localStorage.getItem("token")
-    );
-    const [user, setUser] = useState<User | null>(() => {
+const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+    const [user, setUser] = useState<any>(null);
+
+    // Optioneel: bij het laden van de app, probeer de gebruiker te herstellen vanuit localStorage
+    useEffect(() => {
         const storedUser = localStorage.getItem("user");
-        return storedUser ? JSON.parse(storedUser) : null;
-    });
 
-    useEffect(() => {
-        if (token) {
-            localStorage.setItem("token", token);
-            console.log(token);
-        } else {
-            localStorage.removeItem("token");
+        if (storedUser) {
+            try {
+                setUser(JSON.parse(storedUser));
+            } catch (error) {
+                console.error("Error parsing stored user:", error);
+                setUser(null);
+            }
         }
-    }, [token]);
-
-    useEffect(() => {
-        if (user) {
-            localStorage.setItem("user", JSON.stringify(user));
-        } else {
-            localStorage.removeItem("user");
-        }
-    });
-
+    }, []);
     return (
-        <AuthContext.Provider value={{ token, setToken, user, setUser }}>
+        <AuthContext.Provider value={{ user, setUser }}>
             {children}
         </AuthContext.Provider>
     );
 };
+export default AuthProvider;

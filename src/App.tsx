@@ -6,7 +6,7 @@ import Register from "./pages/RegisterPage";
 import DetailPage from "./pages/DetailPage";
 import CheckoutForm from "./pages/CheckoutPage";
 import MyAccount from "./pages/ProfileEdit";
-import { AuthProvider } from "./context/authContext";
+import AuthProvider from "./context/authContext";
 import { WishListProvider } from "./context/wishListContext";
 import { CartProvider } from "./context/cartContext";
 import OverviewPage from "./pages/OverviewPage";

@@ -1,4 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+    Product,
+    AddToCartResponse,
+    AddToCartRequest,
+} from "../../utils/types";
+import { clearCart } from "./cartSlice";
 
 const cartApi = createApi({
     reducerPath: "cartApi",
@@ -8,16 +14,37 @@ const cartApi = createApi({
     }),
 
     endpoints: (builder) => ({
-        addToCart: builder.mutation({
-            query: (data) => ({
+        addToCart: builder.mutation<AddToCartResponse, AddToCartRequest>({
+            query: ({ product, user }) => ({
                 url: "/add",
                 method: "POST",
-                body: data,
+                body: { product, userId: user._id },
+            }),
+            invalidatesTags: ["Cart"],
+        }),
+        deleteProduct: builder.mutation<
+            AddToCartResponse,
+            { productId: string; userId: string }
+        >({
+            query: ({ productId, userId }) => ({
+                url: `/delete/${userId}/${productId}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["Cart"],
+        }),
+        deleteAllProducts: builder.mutation({
+            query: ({ userId }) => ({
+                url: `/deleteAll/${userId}`,
+                method: "DELETE",
             }),
             invalidatesTags: ["Cart"],
         }),
     }),
 });
 
-export const { useAddToCartMutation } = cartApi;
+export const {
+    useAddToCartMutation,
+    useDeleteProductMutation,
+    useDeleteAllProductsMutation,
+} = cartApi;
 export default cartApi;

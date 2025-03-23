@@ -5,12 +5,13 @@ import ProductCard from "./ProductCard";
 import ErrorComponent from "./ErrorComponent";
 import LoadingComponent from "./LoadingComponent";
 import { useGetProductsRandomQuery } from "./store/productsApi";
-
+import { Product } from "../utils/types";
 const Grid1Row = () => {
     const sliderRef = useRef<HTMLDivElement>(null);
     const { data, error, isLoading } = useGetProductsRandomQuery(10);
-    const products = data && data.data ? data.data.flat() : [];
-    console.log(products);
+    console.log("data", data);
+    const products: Product[] = data ? data.data : [];
+
     const scrollLeft = () => {
         if (sliderRef.current) {
             sliderRef.current.scrollBy({ left: -250, behavior: "smooth" });
@@ -39,17 +40,9 @@ const Grid1Row = () => {
             <div className={styles.slider_container}>
                 <div className={styles.slider} ref={sliderRef}>
                     {products &&
-                        products.map(
-                            (product: any) => (
-                                console.log(product),
-                                (
-                                    <ProductCard
-                                        key={product._id}
-                                        product={product}
-                                    />
-                                )
-                            )
-                        )}
+                        products.map((product: Product) => (
+                            <ProductCard key={product._id} product={product} />
+                        ))}
                 </div>
             </div>{" "}
             <div className={styles.arrows}>

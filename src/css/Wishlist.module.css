@@ -1,4 +1,21 @@
 .container {
+    margin-top: 180px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 40px;
+}
+.removeAll {
+    padding: 6px 30px;
+    background-color: #db4444;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+    margin: 50px auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
 }

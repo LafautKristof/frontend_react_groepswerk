@@ -11,22 +11,24 @@ import {
 } from "react-icons/io5";
 import { GrUserAdmin } from "react-icons/gr";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { useContext, useRef } from "react";
-import { AuthContext } from "../context/authContext";
+import { useRef } from "react";
+
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { clearUser } from "../components/store/authSlice";
+import { RootState } from "./store/store";
 const TopNav = () => {
-    const { token, setToken } = useContext(AuthContext);
-    const { user, setUser } = useContext(AuthContext);
+    const token = localStorage.getItem("token");
+    const user = useSelector((state: RootState) => state.auth.user);
     const [isDropDown, setIsDropDown] = useState(false);
     const dropDownRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
-    const wishList = useSelector((state: any) => state.wishList);
-    const cart = useSelector((state: any) => state.cart);
+    const wishList = useSelector((state: RootState) => state.wishList);
+    const cart = useSelector((state: RootState) => state.cart);
+    const dispatch = useDispatch();
     const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        setUser(null);
-        setToken(null);
+        localStorage.removeItem("token");
+        dispatch(clearUser());
 
         navigate("/login");
     };
@@ -87,7 +89,9 @@ const TopNav = () => {
                                     onClick={handleClick}
                                 />{" "}
                             </Link>{" "}
-                            {cart.length > 0 && <span>{cart.length}</span>}
+                            {cart.items.length > 0 && (
+                                <span>{cart.items.length}</span>
+                            )}
                         </div>
                         {token && (
                             <>

@@ -2,12 +2,61 @@ import { useSelector } from "react-redux";
 import styles from "../css/Cart.module.css";
 import { Link } from "react-router";
 import { useDispatch } from "react-redux";
-import { increment, decrement } from "./store/cartSlice";
+import {
+    increment,
+    decrement,
+    clearCart,
+    deleteProductSlice,
+} from "./store/cartSlice";
 import { AiTwotoneDelete } from "react-icons/ai";
+import { RootState } from "./store/store";
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
+import {
+    useDeleteProductMutation,
+    useDeleteAllProductsMutation,
+} from "./store/cartApi";
 const Cart = () => {
-    const cart = useSelector((state: any) => state.cart);
-
+    const { user } = useContext(AuthContext);
+    const cart = useSelector((state: RootState) => state.cart);
+    const [deleteProduct] = useDeleteProductMutation();
+    const [deleteAllProducts] = useDeleteAllProductsMutation();
     const dispatch = useDispatch();
+    const handleClearCart = async () => {
+        if (!user) {
+            console.log("user", user);
+            return;
+        }
+        try {
+            const userId = user._id;
+            console.log("user", user._id);
+            const response = await deleteAllProducts({ userId });
+            console.log("responsepdcard", response);
+
+            dispatch(clearCart());
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleDeleteProduct = async (id: any) => {
+        if (!user) {
+            console.log("user", user);
+            return;
+        }
+        try {
+            console.log("id", id);
+            const productId = id;
+            const userId = user._id;
+            console.log("user", user._id);
+            const response = await deleteProduct({ productId, userId });
+            console.log("responsepdcard", response);
+
+            dispatch(deleteProductSlice(productId));
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <>
@@ -21,7 +70,7 @@ const Cart = () => {
                             <th>Subtotal</th>
                         </tr>
                     </thead>
-                    {cart?.map((cartItem: any) => (
+                    {cart.items.map((cartItem: any) => (
                         <tbody
                             key={cartItem._id}
                             className={styles.custom_tbody}
@@ -32,14 +81,19 @@ const Cart = () => {
                                         src={cartItem.images[0]}
                                         alt={cartItem.name}
                                     />
-                                    <div className={styles.delete}>
+                                    <div
+                                        onClick={() =>
+                                            handleDeleteProduct(cartItem._id)
+                                        }
+                                        className={styles.delete}
+                                    >
                                         <span>
                                             <AiTwotoneDelete />
                                         </span>
                                     </div>
                                     <span>{cartItem.name}</span>
                                 </td>
-                                <td>${cartItem.price.toFixed(2)}</td>
+                                <td>${cartItem.price}</td>
                                 <td>
                                     <div className={styles.quantity}>
                                         <p>{cartItem.quantity}</p>
@@ -80,15 +134,19 @@ const Cart = () => {
                     <button onClick={() => (window.location.href = "/")}>
                         Return to shop
                     </button>{" "}
-                    <button>Delete Cart</button>
+                    <button onClick={handleClearCart}>Delete Cart</button>
                 </div>
                 <div className={styles.total}>
                     <h2>Cart Total</h2>
                     <div>
                         <h3>Subtotal: </h3>
                         <p>
-                            {cart
-                                .reduce((total, item) => total + item.price, 0)
+                            {cart.items
+                                .reduce(
+                                    (total: any, item: any) =>
+                                        total + item.price,
+                                    0
+                                )
                                 .toFixed(2)}
                         </p>
                     </div>
@@ -99,7 +157,7 @@ const Cart = () => {
                     <hr />
                     <div>
                         <h3>Total:</h3>
-                        {cart
+                        {cart.items
                             .reduce(
                                 (total, item) =>
                                     total + item.price * item.quantity,

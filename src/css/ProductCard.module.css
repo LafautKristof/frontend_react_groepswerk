@@ -104,5 +104,19 @@ a {
                 color: #7d8184;
             }
         }
+        .delete {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            bottom: 5px;
+            right: 30px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 50%;
+            &:hover {
+                background-color: #db4444;
+                color: white;
+            }
+        }
     }
 }
