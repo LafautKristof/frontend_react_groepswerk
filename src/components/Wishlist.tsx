@@ -7,9 +7,17 @@ const Wishlist = () => {
     const dispatch = useDispatch();
     const wishList = useSelector((state: RootState) => state.wishList);
     const handleDeleteAll = () => {
-        console.log("ckicked");
         dispatch(deleteAll());
     };
+    if (wishList.length === 0) {
+        return (
+            <>
+                <div className={styles.oops}>
+                    <img src="../images/empty-wishlist.png" alt="" />
+                </div>
+            </>
+        );
+    }
     return (
         <>
             <div className={styles.container}>

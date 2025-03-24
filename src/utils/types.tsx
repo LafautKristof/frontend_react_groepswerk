@@ -63,7 +63,7 @@ export type AddToCartRequest = {
 
 export type AddToCartResponse = {
     success: boolean;
-    cart: Product[]; // of wat je server terugstuurt
+    cart: Product[];
 };
 export interface CartItem extends Product {
     quantity: number;

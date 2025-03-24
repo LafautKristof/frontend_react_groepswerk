@@ -29,12 +29,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
     const handleAddToCart = async (product: any) => {
         if (!user) {
+            alert("You need to be logged in to add products to your cart.");
             return;
         }
         try {
             const response = await addToCart({ product, user }).unwrap();
             const items = response;
-            console.log(items);
+
             dispatch(setCart(items.cart));
         } catch (error) {
             console.log(error);

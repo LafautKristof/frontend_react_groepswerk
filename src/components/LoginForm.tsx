@@ -11,10 +11,10 @@ const LoginForm = () => {
 
     const navigate = useNavigate();
     const { setUser } = useContext(AuthContext);
+
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            console.log("Inloggen:", emailPhone, password);
             const result = await loginUser({
                 email_phone: emailPhone,
                 password,
@@ -45,7 +45,7 @@ const LoginForm = () => {
                 <input
                     name="password"
                     onChange={(e) => setPassword(e.target.value)}
-                    type="text"
+                    type="password"
                     placeholder="Password"
                 />
                 <div>

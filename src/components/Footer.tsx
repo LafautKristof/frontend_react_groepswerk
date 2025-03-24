@@ -40,8 +40,8 @@ const Footer = () => {
                     <Link to="/myaccount">My Account</Link>
                     <Link to="/login">Login / Register</Link>
                     <Link to="/cart">Cart</Link>
-                    <Link to="/whishlist">Wishlist</Link>
-                    <Link to="/shop">Shop</Link>
+                    <Link to="/wishlist">Wishlist</Link>
+                    <Link to="/">Shop</Link>
                 </div>
 
                 <div className={styles.fourth_table}>

@@ -16,6 +16,8 @@ import { useRef } from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../components/store/authSlice";
+import { clearCart } from "../components/store/cartSlice";
+import { deleteAll } from "../components/store/wishlistSlice";
 import { RootState } from "./store/store";
 const TopNav = () => {
     const token = localStorage.getItem("token");
@@ -31,6 +33,8 @@ const TopNav = () => {
     const handleLogout = () => {
         localStorage.removeItem("token");
         dispatch(clearUser());
+        dispatch(clearCart());
+        dispatch(deleteAll());
 
         navigate("/login");
     };
@@ -60,7 +64,18 @@ const TopNav = () => {
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/contact">Contact</NavLink>
                     <NavLink to="/about">About</NavLink>
-                    <NavLink to="/login">Sign Up</NavLink>
+                    {user && token ? (
+                        <NavLink to="/" onClick={handleLogout}>
+                            Logout
+                        </NavLink>
+                    ) : (
+                        <>
+                            <NavLink to="/login">Login</NavLink>
+                            <NavLink to="/register" onClick={handleLogout}>
+                                Register
+                            </NavLink>
+                        </>
+                    )}
                 </div>
                 <div className={styles.search_icons}>
                     <div>

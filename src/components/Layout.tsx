@@ -12,23 +12,6 @@ const Layout = ({ children }: PropTypes) => {
         <>
             <TopHeader />
             <TopNav />
-
-            {/* <TopBanner />
-
-            <div className="today">
-                <Timer date="2025-03-25T17:00:00" />
-                <Grid1Row />
-            </div>
-            <hr />
-            <div className="categories">
-                <CategoriesTop />
-                <CategoriesBottom />
-            </div>
-            <hr />
-            <div className="ourProducts">
-                <OurProductsTop />
-                <OurProductsBottom />
-            </div> */}
             <main>{children}</main>
             <Outlet />
 

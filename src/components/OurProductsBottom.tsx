@@ -29,17 +29,9 @@ const OurProductsBottom = () => {
         <>
             <div className={styles.our_products_bottom}>
                 {products &&
-                    products.map(
-                        (product: any) => (
-                            console.log(product),
-                            (
-                                <ProductCard
-                                    key={product._id}
-                                    product={product}
-                                />
-                            )
-                        )
-                    )}
+                    products.map((product: any) => (
+                        <ProductCard key={product._id} product={product} />
+                    ))}
             </div>{" "}
             <button
                 onClick={() => (window.location.href = "/allproduct/random/40")}
