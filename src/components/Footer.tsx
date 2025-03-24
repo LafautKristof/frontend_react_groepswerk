@@ -56,15 +56,12 @@ const Footer = () => {
                     <p>From App Store or Google Play</p>
                     <div className={styles.qr_apple_google}>
                         <div>
-                            <img src="../src/assets/icons/QrCode.png" alt="" />
+                            <img src="../icons/QrCode.png" alt="" />
                         </div>
                         <div>
+                            <img src="../icons/download-appstore.svg" alt="" />
                             <img
-                                src="../src/assets/icons/download-appstore.svg"
-                                alt=""
-                            />
-                            <img
-                                src="../src/assets/icons/png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.svg"
+                                src="../icons/png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.svg"
                                 alt=""
                             />
                         </div>

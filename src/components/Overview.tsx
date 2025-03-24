@@ -2,6 +2,7 @@ import styles from "../css/Overview.module.css";
 import ProductCard from "./ProductCard";
 
 const Overview = ({ product }: any) => {
+    console.log(product);
     return (
         <div className={styles.overview}>
             <h1>Overview</h1>

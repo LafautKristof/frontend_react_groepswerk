@@ -86,3 +86,16 @@
         }
     }
 }
+.viewAll {
+    padding: 15px 30px;
+    background-color: #db4444;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+    margin: 50px auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -6,7 +6,7 @@ const TopFilter = () => {
             <div className={styles.topFilter}>
                 <ul>
                     <Link to="/allproduct/computerscreen">Computerscreen</Link>
-                    <Link to="/allproduct/headphones">Headphone</Link>
+                    <Link to="/allproduct/headphone">Headphone</Link>
                     <Link to="/allproduct/keyboard">Keyboard</Link>
                     <Link to="/allproduct/mouse">Mouse</Link>
                     <Link to="/allproduct/ram">RAM</Link>

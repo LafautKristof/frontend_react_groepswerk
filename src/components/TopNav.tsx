@@ -27,6 +27,7 @@ const TopNav = () => {
     const wishList = useSelector((state: RootState) => state.wishList);
     const cart = useSelector((state: RootState) => state.cart);
     const dispatch = useDispatch();
+    console.log(user?.role);
     const handleLogout = () => {
         localStorage.removeItem("token");
         dispatch(clearUser());
@@ -103,7 +104,7 @@ const TopNav = () => {
                                         />
                                         <div className={styles.dropdown}>
                                             <div>
-                                                <Link to="/profile">
+                                                <Link to="/myaccount">
                                                     <IoPersonOutline
                                                         size={24}
                                                     />
@@ -149,7 +150,7 @@ const TopNav = () => {
 
                                             <div>
                                                 <Link
-                                                    to="#"
+                                                    to="/"
                                                     onClick={handleLogout}
                                                 >
                                                     <IoLogOutOutline

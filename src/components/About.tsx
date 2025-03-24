@@ -19,21 +19,31 @@ const About = () => {
                     {" "}
                     <h1>Our Story</h1>
                     <p>
-                        Launced in 2015, Exclusive is South Asia’s premier
-                        online shopping makterplace with an active presense in
-                        Bangladesh. Supported by wide range of tailored
-                        marketing, data and service solutions, Exclusive has
-                        10,500 sallers and 300 brands and serves 3 millioons
-                        customers across the region.{" "}
+                        When my three teammates dropped out of the course, I
+                        suddenly found myself starring in a one-man show! I
+                        became the researcher, coder, writer, presenter—and the
+                        entire team. Welcome to the Solo Edition of our IT
+                        project, where I handle it all with a smile!
                     </p>
                     <p>
-                        Exclusive has more than 1 Million products to offer,
-                        growing at a very fast. Exclusive offers a diverse
-                        assotment in categories ranging from consumer.
+                        In this solo adventure, I’ve taken on every role:
+                        developer, project manager, quality assurance tester,
+                        and even the occasional debugger. Every bug is just a
+                        feature in disguise, and every tight deadline is an
+                        opportunity to optimize my code. Who needs a full team
+                        when you can be the Swiss Army knife of IT projects?
+                    </p>
+                    <p>
+                        On this About page, I share my journey of turning
+                        setbacks into innovative solutions—transforming
+                        challenges into stepping stones for creativity, one line
+                        of code at a time. Enjoy the ride as I embrace this
+                        one-man mission with humor, determination, and plenty of
+                        caffeine!
                     </p>
                 </div>
                 <div>
-                    <img src="/src/assets/images/sideImage.png" alt="" />
+                    <img src="../images/sideImage.png" alt="" />
                 </div>
             </div>
 
@@ -73,7 +83,7 @@ const About = () => {
             <div className={styles.pictures}>
                 <div className={styles.card}>
                     <div className={styles.imgcontainer}>
-                        <img src="../src/assets/images/jorne.jpg" alt="" />
+                        <img src="../images/jorne.jpg" alt="" />
                     </div>
                     <h4>Tom Cruise</h4>
                     <p>Managing Director</p>
@@ -95,7 +105,7 @@ const About = () => {
                 </div>
                 <div className={styles.card}>
                     <div className={styles.imgcontainer}>
-                        <img src="../src/assets/images/david.jpg" alt="" />
+                        <img src="../images/david.jpg" alt="" />
                     </div>
                     <h4>Will Smith</h4>
                     <p>founder &amp; Chairman</p>
@@ -117,7 +127,7 @@ const About = () => {
                 </div>
                 <div className={styles.card}>
                     <div className={styles.imgcontainer}>
-                        <img src="../src/assets/images/kristof.jpg" alt="" />
+                        <img src="../images/kristof.jpg" alt="" />
                     </div>
                     <h4>Harrison Ford</h4>
                     <p>Product Designer</p>

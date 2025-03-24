@@ -3,15 +3,15 @@ import { useState, useEffect, SetStateAction } from "react";
 
 const slidesData = [
     {
-        image: "../src/assets/images/hero_endframe__cvklg0xk3w6e_large 2.svg",
+        image: "../images/hero_endframe__cvklg0xk3w6e_large 2.svg",
         text: "Up to 10% off Voucher",
     },
     {
-        image: "../src/assets/images/banner2.jpg",
+        image: "../images/banner2.jpg",
         text: "Limited Time Offer!",
     },
     {
-        image: "../src/assets/images/banner3.jpg",
+        image: "../images/banner3.jpg",
         text: "Shop Now & Save Big!",
     },
 ];

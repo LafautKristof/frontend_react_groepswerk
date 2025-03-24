@@ -32,7 +32,7 @@ function App() {
                                 element={<DetailPage />}
                             />
                             <Route
-                                path="/allproduct/"
+                                path="/allproduct/random/:count"
                                 element={<OverviewPage />}
                             />
                             <Route

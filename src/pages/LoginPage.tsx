@@ -5,7 +5,7 @@ const Login = () => {
         <div>
             <div className={styles.loginPage}>
                 <div>
-                    <img src="./src/assets/images/SideImage.svg" alt="" />
+                    <img src="../images/SideImage.svg" alt="" />
                 </div>
                 <LoginForm />
             </div>

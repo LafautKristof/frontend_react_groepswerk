@@ -8,11 +8,11 @@ const productsApi = createApi({
         baseUrl: "https://backend-node-groepswerk.onrender.com/api/products/",
     }),
     endpoints: (builder) => ({
-        getProductsRandom: builder.query<ProductsResponse, number>({
+        getProductsRandom: builder.query<ProductsResponse, string>({
             query: (id) => `/random/${id}`,
             providesTags: ["Product"],
         }),
-        getAllProducts: builder.query({
+        getAllProducts: builder.query<ProductsResponse, string>({
             query: (item: string) =>
                 item && item.trim() !== "" ? `/${item}` : "/",
             providesTags: ["Product"],

@@ -8,9 +8,15 @@ import { useGetProductsRandomQuery } from "./store/productsApi";
 import { Product } from "../utils/types";
 const Grid1Row = () => {
     const sliderRef = useRef<HTMLDivElement>(null);
-    const { data, error, isLoading } = useGetProductsRandomQuery(10);
-
-    const products: Product[] = data ? data.data : [];
+    const { data, error, isLoading } = useGetProductsRandomQuery("10", {
+        skip: false,
+    });
+    console.log("3", data);
+    const products: Product[] = Array.isArray(data)
+        ? data
+        : data && data.data && Array.isArray(data.data)
+        ? data.data
+        : [];
 
     const scrollLeft = () => {
         if (sliderRef.current) {
@@ -50,7 +56,9 @@ const Grid1Row = () => {
                     <IoArrowBackOutline />
                 </button>
                 <button
-                    onClick={() => (window.location.href = "/allproduct")}
+                    onClick={() =>
+                        (window.location.href = "/allproduct/random/40")
+                    }
                     className={styles.viewAll}
                 >
                     View All Products

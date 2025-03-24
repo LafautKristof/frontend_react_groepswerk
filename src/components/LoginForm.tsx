@@ -20,7 +20,7 @@ const LoginForm = () => {
                 password,
             }).unwrap();
             localStorage.setItem("user", JSON.stringify(result.user));
-            localStorage.setItem("token", result.token); // Hier kun je de token opslaan (bijv. in localStorage) en de user in je state zetten
+            localStorage.setItem("token", result.token);
 
             setUser(result.user);
             navigate("/");
